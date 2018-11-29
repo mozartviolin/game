@@ -15,30 +15,28 @@ public class QabbsDAO implements IQabbsDAO{
 	
 	@Override
 	public boolean create(Object dto) throws Exception {
-		boolean flag = false;
-		
-		int cnt = mybatis.insert("qabbs.create", QabbsDTO);
+		boolean flag = false;		
+		int cnt = mybatis.insert("qabbs.create", dto);
 		if(cnt>0)flag = true;	
-		
 		return flag;
 	}
 
 	@Override
 	public List list(Map map) throws Exception {
-		return mybatis.selectList("qna.list", map);
+		return mybatis.selectList("qabbs.list", map);
 	}
 
 	@Override
 	public Object read(Object pk) throws Exception {
 				
-		QabbsDTO qabbsDTO = mybatis.selectOne("qna.read", qano);
+		QabbsDTO qabbsDTO = mybatis.selectOne("qabbs.read", pk);
 		return qabbsDTO;
 	}
 
 	@Override
 	public boolean update(Object dto) throws Exception {
 		boolean flag = false;
-		int cnt = mybatis.update("qna.update",qabbsDTO);
+		int cnt = mybatis.update("qabbs.update", dto);
 		if(cnt>0)flag = true;
 		
 		return flag;
@@ -47,7 +45,7 @@ public class QabbsDAO implements IQabbsDAO{
 	@Override
 	public boolean delete(Object pk) throws Exception {
 		boolean flag = false;
-		int cnt = mybatis.delete("qabbs.delete",qano);
+		int cnt = mybatis.delete("qabbs.delete",pk);
 		if(cnt>0)flag = true;
 		
 		return flag;
