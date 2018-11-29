@@ -70,4 +70,8 @@
 		   p:mybatis-ref="sqlSession"
 	/>
 	
+	<bean id="qabbs" class="spring.model.board.ReplyDAO"
+		   p:mybatis-ref="sqlSession"
+	/>
+	
 </beans>

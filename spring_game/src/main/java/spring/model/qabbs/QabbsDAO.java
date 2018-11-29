@@ -3,42 +3,59 @@ package spring.model.qabbs;
 import java.util.List;
 import java.util.Map;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class QabbsDAO implements IQabbsDAO{
 
+	@Autowired
+	private SqlSessionTemplate mybatis;
+	
 	@Override
 	public boolean create(Object dto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		
+		int cnt = mybatis.insert("qabbs.create", QabbsDTO);
+		if(cnt>0)flag = true;	
+		
+		return flag;
 	}
 
 	@Override
 	public List list(Map map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("qna.list", map);
 	}
 
 	@Override
 	public Object read(Object pk) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+				
+		QabbsDTO qabbsDTO = mybatis.selectOne("qna.read", qano);
+		return qabbsDTO;
 	}
 
 	@Override
 	public boolean update(Object dto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		int cnt = mybatis.update("qna.update",qabbsDTO);
+		if(cnt>0)flag = true;
+		
+		return flag;
 	}
 
 	@Override
 	public boolean delete(Object pk) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		boolean flag = false;
+		int cnt = mybatis.delete("qabbs.delete",qano);
+		if(cnt>0)flag = true;
+		
+		return flag;
 	}
 
 	@Override
 	public int total(Map map) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return mybatis.selectOne("qabbs.total", map);
 	}
 
 }
