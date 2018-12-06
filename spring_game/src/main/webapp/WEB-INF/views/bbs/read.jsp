@@ -126,7 +126,14 @@ function rdelete(breplyno){
             <td>${bbsDTO.nicname }</td>
         </tr>
         <tr>
-            <td colspan="2">${content }</td>
+        	<th>내용</th>
+            <td>
+           	<c:if test="${not empty img }">
+           		<img src="${root }/bbs/storage/${img}" style="width:225px; height:225px;"> 
+           		<br>
+           	</c:if>
+            ${content }
+            </td>
         </tr>
         <tr>
             <th>등록일</th>

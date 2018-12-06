@@ -268,6 +268,24 @@ public class BbsController {
 			e.printStackTrace();
 		}
 		
+		String img = ""; 
+		
+		if(bbsDTO.getFilename()!=null) {
+		
+			String end = bbsDTO.getFilename();
+			
+			if(end.substring(end.length()-3, end.length()).equals("jpg") ||
+					end.substring(end.length()-3, end.length()).equals("png") ||
+					end.substring(end.length()-3, end.length()).equals("gif")) {
+				
+				img = bbsDTO.getFilename();
+			}else {
+				
+				img = "";
+			}
+			model.addAttribute("img", img);
+		}
+		
 		model.addAttribute("bbsDTO", bbsDTO);
 		model.addAttribute("content", bbsDTO.getContent().replaceAll("\r\n","<br>"));
 		
