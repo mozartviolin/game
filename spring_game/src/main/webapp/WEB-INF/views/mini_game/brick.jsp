@@ -22,7 +22,7 @@ var w;
 function startWorker() {
     if(typeof(Worker) !== "undefined") {
         if(typeof(w) == "undefined") {
-            w = new Worker("${root}/js/demo_workers.js");
+            w = new Worker("${root}/mini_game/demo_workers.js");
         }
         w.onmessage = function(event) {
             document.getElementById("time_game").innerHTML = event.data;
@@ -41,41 +41,19 @@ function stopWorker() {
 
 
 <script type="text/javascript">
-var timer;
-var i=0;
-var divide=100;
-
+function brick_way(){
+	var url="${root}/mini_game/brick_way.jsp";
+	wr=window.open(url,"[게임 방법]","width=400, height=400");
+	
+}
 function game_brick(){
 	alert("3초후 게임이 시작됩니다.")
-	setTimeout("test()",1000);
+	setTimeout("brickbreak()",3000);
 
 }
 
-// function start(){
-// 	timer=self.setInterval('check()',(1000));
-// }
-
-// function check(){
-// 	i++;
-// 	$('#time_game').html(i);
-// }
-
-// function stop(){
-// 	clearInterval(timer);
-// 	timer=null;
-// }
-
-// function reset(){
-// 	stop();
-// 	i=0;
-// 	$("#time_game").html(i/divide);
-// }
-
-function test(){
-	setTimeout("brickbreak()",3000);
+window.onload=function (){
 	
-	
-
 	var ctx = document.getElementById("canvas").getContext("2d");
     ctx.arc(75, 75, 10, 0, Math.PI * 2, true);
     ctx.fillStyle = '#03158a';
@@ -238,7 +216,11 @@ function end(){
 	alert("게임이 종료되었습니다.");
 	//reset();
 }
-   
+
+function win(){
+	alert("벽돌을 모두 제거했습니다.!  축하합니다~!!!!!!");
+	//reset();
+}
    
    
 function brickbreak(){
@@ -265,6 +247,8 @@ function brickbreak(){
     var canvasMinX, canvasMaxX;
     
     var is_gameover=false;
+    var is_gamewin=false;
+    var sum;
     
     
     //블록
@@ -336,7 +320,16 @@ function brickbreak(){
         	if(bricks[row][col]==1){
         		dy= -dy;
         		bricks[row][col]=0;
-        	}
+        	}sum=0;
+            for(i=0;i<nrows;i++){
+            	for(j=0;j<ncols;j++){
+            		if(bricks[i][j]==1){
+            			sum=sum+bricks[i][j];
+
+            			
+            		}
+            	}
+            }if(sum==0)is_gamewin=true;
         }
         
 
@@ -356,8 +349,13 @@ function brickbreak(){
             }
         	
         }
-        if(is_gameover){
-			window.cancelAnimationFrame(anim); 
+        
+        if(is_gamewin){
+			window.cancelAnimationFrame(anim);   
+			stopWorker();
+			win();
+        }else if(is_gameover){
+			window.cancelAnimationFrame(anim);   
 			stopWorker();
 			end();
         }else{
@@ -398,8 +396,8 @@ function brickbreak(){
     
     //벽돌 기본값
     function init_bricks(){
-    	nrows=5;
-    	ncols=5;
+    	nrows=2;
+    	ncols=2;
     	padding=2;
     	brick_w=(width/ncols);
     	brick_h=18;
@@ -447,8 +445,8 @@ function brickbreak(){
     
     $(document).mousemove(onMouseMove);
     //canvas.onmousemove=onMouseMove();
-    
    }  
+    
 
 </script>
 
@@ -457,14 +455,16 @@ function brickbreak(){
 <body>
 	<DIV>
 
-		<button id="start" onclick="game_brick()">게임시작</button>
-		<br><br>
-		<span id="time_game">0.00</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="start" onclick="game_brick()">게임시작</button>
+		&nbsp;&nbsp;<button id="play" onclick="brick_way()">게임 방법</button>
+		&nbsp;&nbsp;타이머 : <span id="time_game">0.00</span>
 
 		<br><br>
 	</div>
-	<div>
-		<canvas id="canvas" width="350" height="350"></canvas>
+	<div >
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<canvas id="canvas" width="350" height="350"
+											style="position:relative; border:1px solid black;"></canvas>
+
 	</DIV>
 </body>
 
