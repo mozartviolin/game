@@ -396,8 +396,8 @@ function brickbreak(){
     
     //벽돌 기본값
     function init_bricks(){
-    	nrows=2;
-    	ncols=2;
+    	nrows=5;
+    	ncols=5;
     	padding=2;
     	brick_w=(width/ncols);
     	brick_h=18;
