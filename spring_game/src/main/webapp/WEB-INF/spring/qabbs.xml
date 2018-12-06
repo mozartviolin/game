@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+
+	<tiles-definitions> 
+      <definition name="main" template="/WEB-INF/views/template/template.jsp"> 
+        <put-attribute name="header" value="/WEB-INF/views/template/header.jsp" /> 
+        <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" /> 
+    </definition> 
+	<definition name="/home" extends="main"> 
+        <put-attribute name="title" value="기본페이지" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/home.jsp" /> 
+    </definition>   
+    <definition name="/qabbs/create" extends="main"> 
+        <put-attribute name="title" value="qabbs 생성" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/createForm.jsp" /> 
+    </definition>   
+    <definition name="/qabbs/update" extends="main"> 
+        <put-attribute name="title" value="qabbs 수정" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/updateForm.jsp" /> 
+    </definition>  
+    <definition name="/qabbs/delete" extends="main"> 
+        <put-attribute name="title" value="qabbs 삭제" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/deleteForm.jsp" /> 
+    </definition>  
+     <definition name="/qabbs/reply" extends="main"> 
+        <put-attribute name="title" value="qabbs 조회" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/replyForm.jsp" /> 
+    </definition>  
+    <definition name="/qabbs/list" extends="main"> 
+        <put-attribute name="title" value="qabbs 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/list.jsp" /> 
+    </definition>  
+    <definition name="/qabbs/read" extends="main"> 
+        <put-attribute name="title" value="qabbs 조회" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/read.jsp" /> 
+    </definition>  
+    
+   
+    
+   
+</tiles-definitions>
