@@ -128,42 +128,61 @@ public class BbsController {
 	}
 	
 	@RequestMapping(value="/bbs/delete", method=RequestMethod.POST)
-	public String delete(int bbsno, String passwd, Model model, HttpServletRequest request, String oldfile) {
+	public String delete(int bbsno, String passwd, Model model, HttpServletRequest request, String oldfile,
+			String col, String word, int nowPage) {
 		
 		String upDir = request.getRealPath("bbs/storage");
 		
 		Map map = new HashMap();
 		map.put("bbsno", bbsno);
 		map.put("passwd", passwd);
+		map.put("col", col);
+		map.put("word", word);
 		
-		boolean flag = false;
+		String url = "";
+		
+		int total = 0;
+		
+		try {
+			total = bbsDAO.total(map);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+		int totalPage = (int)(Math.ceil((double)total/5));
 		
 		boolean pflag = bbsDAO.checkPW(map);
+		
 		if(pflag) {
+			
 			try {
-				flag = bbsDAO.delete(bbsno);
+				if(bbsDAO.delete(bbsno)) {
+					
+					if(nowPage!=1 && nowPage==totalPage && total%5==1) {
+						nowPage = nowPage - 1;
+					}
+					
+					Utility.deleteFile(upDir, oldfile);
+					
+					model.addAttribute("col", col);
+					model.addAttribute("word", word);
+					model.addAttribute("nowPage", nowPage);
+					
+					url = "redirect:/bbs/list";
+				}else {
+					
+					url = "/error/error";
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		if(pflag) {
-			if(flag) {
-				Utility.deleteFile(upDir, oldfile);
-				
-				model.addAttribute("col", request.getParameter("col"));
-				model.addAttribute("word", request.getParameter("word"));
-				model.addAttribute("nowPage", request.getParameter("nowPage"));
-				
-				return "redirect:/bbs/list";
-			}else {
-				
-				return "/error/error";
-			}
 		}else {
 			
-			return "/error/passwdError";
+			url = "/error/passwdError";
 		}
+		
+		return url;
 	}
 	
 	@RequestMapping(value="/bbs/update", method=RequestMethod.GET)
@@ -191,43 +210,50 @@ public class BbsController {
 		map.put("bbsno", bbsDTO.getBbsno());
 		map.put("passwd", bbsDTO.getPasswd());
 		
+		int filesize = (int)bbsDTO.getFilenameMF().getSize();
 		String filename = "";
+		String url = "";
 		
 		boolean pflag = bbsDAO.checkPW(map);
-		boolean flag = false;
 		
 		if(pflag) {
+			if(filesize>0) {
+				if(oldfile != null) {
+					
+					Utility.deleteFile(upDir, oldfile);
+					filename = Utility.saveFileSpring(bbsDTO.getFilenameMF(), upDir);
+				
+				}
+			}else {
+				
+				filename = oldfile;
+			}
+			
+			bbsDTO.setFilename(filename);
+			
 			try {
-				flag = bbsDAO.update(bbsDTO);
+				if(bbsDAO.update(bbsDTO)) {
+					
+					model.addAttribute("col", request.getParameter("col"));
+					model.addAttribute("word", request.getParameter("word"));
+					model.addAttribute("nowPage", request.getParameter("nowPage"));
+					
+					url = "redirect:/bbs/list";
+				}else {
+					
+					url = "/error/error";
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else {
+			
+			url = "/error/passwdError";
 		}
 		
-		if(pflag) {
-			if(flag) {
-				if(filename!=null) {
-					if(oldfile!=null) {
-						Utility.deleteFile(upDir, oldfile);
-					}
-					filename = Utility.saveFileSpring(bbsDTO.getFilenameMF(), upDir);
-				}
-				
-				bbsDTO.setFilename(filename);
-				
-				model.addAttribute("col", request.getParameter("col"));
-				model.addAttribute("word", request.getParameter("word"));
-				model.addAttribute("nowPage", request.getParameter("nowPage"));
-				
-				return "redirect:/bbs/list";
-			}else {
-				
-				return "/error/error";
-			}
-		}else {
-			return "/error/passwdError";
-		}
+		return url;
+		
 	}
 	
 	@RequestMapping("/bbs/read")
@@ -322,8 +348,7 @@ public class BbsController {
 				
 			return "redirect:/bbs/list";
 		}else {
-			if(filename!=null)
-				Utility.deleteFile(upDir, filename);
+			Utility.deleteFile(upDir, filename);
 				
 			return "/error/error";
 		}

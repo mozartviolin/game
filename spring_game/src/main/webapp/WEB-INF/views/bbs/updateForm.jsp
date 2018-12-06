@@ -41,6 +41,17 @@ function incheck(f){
 } 
 
 
+function blist(){
+	
+	url = "list";
+	url = url + "?col=${param.col}";
+	url = url + "&word=${param.word}";
+	url = url + "&nowPage=${param.nowPage}";
+	
+	location.href = url;
+}
+
+
 </script>
 
 </head>
@@ -111,7 +122,7 @@ function incheck(f){
 <div style="text-align: center">
 
 <input type="submit" value="수정">
-<input type="reset" value="취소">
+<input type="button" value="목록" onclick="blist()">
 
 </div>
 </form>

@@ -33,7 +33,7 @@ public class AdminLoginCheckFilter implements Filter {
         if (session != null) { // session 객체가 생성되어 있는지 확인
             // 로그인을 했으면서 관리자인지 확인합니다.
             if (session.getAttribute("id") != null 
-                    && session.getAttribute("grade").equals("A")) {
+                    && session.getAttribute("grade").equals("1")) {
                 login = true;  // 관리자라면
             }
         }

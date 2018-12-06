@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -14,13 +12,15 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import spring.model.breply.BreplyDAO;
+
 
 
 public class Utility {
 	
-//	public static int rcount(int bbsno, ReplyDAO rdao) {
-//		return rdao.rcount(bbsno);
-//	}
+	public static int rcount(int bbsno, BreplyDAO breplyDAO) {
+		return breplyDAO.rcount(bbsno);
+	}
 
 	public static String saveFileSpring(
 			MultipartFile multipartFile, String basePath) {//basePath는 storage
@@ -273,15 +273,10 @@ public class Utility {
 		String value = null;
 		
 		Hashtable codes = new Hashtable();
-		codes.put("A01", "회사원");
-		codes.put("A02", "전산관련직");
-		codes.put("A03", "연구전문직");
-		codes.put("A04", "각종학교학생");
-		codes.put("A05", "일반자영업");
-		codes.put("A06", "공무원");
-		codes.put("A07", "의료인");
-		codes.put("A08", "법조인");
-		codes.put("A09", "종교/언론/예술인");
+		codes.put("A01", "오목");
+		codes.put("A02", "숫자야구");
+		codes.put("A03", "벽돌깨기");
+		codes.put("A04", "폭탄해체");
 		codes.put("A10", "기타");
 		
 		value = (String)codes.get(code);

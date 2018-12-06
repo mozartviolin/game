@@ -5,6 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="breply">
 
+	
+	<select id="rcount" parameterType="int" resultType="int">
+		select count(*) from breply
+		where bbsno = #{bbsno}
+	</select>
+
 	<insert id="create" parameterType="BreplyDTO">
 		insert into breply(breplyno,bbsno,content,breplydate,nicname)
 		values((select nvl(max(breplyno),0)+1 as breplyno from breply),
