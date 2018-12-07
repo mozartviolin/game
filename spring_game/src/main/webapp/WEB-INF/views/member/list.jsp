@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 
 <script type="text/javascript">
@@ -24,10 +29,12 @@ function read(id){
 
 </head>
 <body>
+<br><BR>
 
-<div class='title' style='width:80%; text-align:center'>
+<div style="width:80%; text-align: center; margin: 0 auto;">
 
-  <h2>회원 목록</h2>
+<h2 style="font-style: oblique;"> 회원 목록</h2>
+<br>
   
   <div>
   	<form method="post" action="./list">
@@ -44,12 +51,12 @@ function read(id){
   		<button>검색</button>
   	</form>
   </div>            
-  
-  <div class="container">
+
+<BR>  
 
 <c:forEach var="memberDTO" items="${list }">
 
-  <TABLE class="table table-hover">
+<table class="table" style="width:60%; margin: 0 auto;">
     <TR>
       <TH style="width: 20%">아이디</TH>
       <TD style="width: 55%">
@@ -81,15 +88,14 @@ function read(id){
     	<td>${memberDTO.mdate}</td>
     </tr>
   </TABLE>
-  
+ 
+<BR><BR>  
 </c:forEach>
   
    ${paging }
 
-
  </div>
-
-</div>
+<BR><BR>
 
 </body>
 </html>

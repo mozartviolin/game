@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 </head>
 
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script type="text/javascript" src="./jquery.js"></script>
 <script type="text/javascript">
 
 function update(){
@@ -38,10 +40,13 @@ function mdel(){
 </head>
 
 <body>
+<BR><BR>
 
-<div class="content" style="width:80%;text-align:center;align:center">
-	<h2><span class="glyphicon glyphicon-heart">마이페이지</span></h2>
-		<table width=50% border=2 bordercolor=red align=center>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 내 정보</h2>
+<br>
+
+	<table class="table" style="width:40%; margin: 0 auto;">
 			<TR>
 				<TD rowspan='8' style="width: 30%;text-align:left">
 					플레이횟수:${memberDTO.playnum }<br>이긴횟수:${memberDTO.win }
@@ -70,14 +75,12 @@ function mdel(){
 			</tr>
 		</table>
 	
-	<div class="bottom">
 	<br><Br>
 	<button type="button" onclick="update()">정보수정</button>
 	<button type="button" onclick="mdel()">회원탈퇴</button>
 	
-	
-	</div>
 </div>
 
+<BR><BR>
 </body>
 </html>

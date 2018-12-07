@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 
 <script type="text/javascript">
@@ -98,11 +103,13 @@ function rdelete(breplyno){
 
 </head>
 <body>
+<BR><BR>
 
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 게시글 읽기</h2>
+<br>
 
-<div style="width:80%; text-align: center;">
-    <table style="width:60%; text-align: center;">
-
+<table class="table" style="width:40%; margin: 0 auto;">
         <tr>
             <th>말머리</th>
             <td>
@@ -152,31 +159,42 @@ function rdelete(breplyno){
         </tr>
 
     </table>
-    	
-    	
-    <input type="submit" name="button" value="목록" onclick="blist()">	
-    <input type="button" name="button" value="수정" onclick="bupdate()">	
-    <input type="button" name="button" value="삭제" onclick="bdelete()">	
+    <BR>	
+    
+    <c:choose>
+    	<c:when test="${sessionScope.nicname == bbsDTO.nicname }">
+	    	<input type="submit" name="button" value="목록" onclick="blist()">	
+		    <input type="button" name="button" value="수정" onclick="bupdate()">	
+		    <input type="button" name="button" value="삭제" onclick="bdelete()">	
+    	</c:when>
+    	<c:otherwise>
+		    <input type="submit" name="button" value="목록" onclick="blist()">	
+    	</c:otherwise>
+    </c:choose>	
+    
 </div>
-
+<br>
 <hr>
+	<div class="rlist" style="width:20%; text-align: right; margin: 0 auto;">
+
+	<h4 style="font-style: oblique;"> 댓글</h4>
 
 <c:forEach var="breplyDTO" items="${rlist }">
 	
-	<div class="rlist" style="text-align: center;">
-	${breplyDTO.nicname }<br>
+	<BR>
+	<b>${breplyDTO.nicname }</b><br>
 	<p>${breplyDTO.content }</p>
-	${breplyDTO.breplydate }
+	<p>${breplyDTO.breplydate }</p>
 	
 	<c:if test="${sessionScope.nicname==breplyDTO.nicname }">
-	<span style="float:right;">
+	<span style="float:center;">
 		<a href="javascript:rupdate('${breplyDTO.breplyno }','${breplyDTO.content }')">수정</a>
 		<a href="javascript:rdelete('${breplyDTO.breplyno }')">삭제</a>
 	</span>
 	</c:if>
-	</div>
 
 </c:forEach>
+	</div>
 
 <div style="text-align: center">${paging }</div>
 
@@ -192,11 +210,12 @@ function rdelete(breplyno){
     	<input type="hidden" name="nowPage" value="${param.nowPage }">
     	<input type="hidden" name="breplyno" value="${0 }">
     	
+   
     	<textarea cols="20" rows="5" name="content"></textarea>
     		
    	    <input type="submit" name="rbutton" value="등록">
    	    </form>
     </div>
-    	<br>
+    	<br><br>
 </body>
 </html>

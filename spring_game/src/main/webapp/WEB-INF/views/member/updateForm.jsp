@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 </head>
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script type="text/javascript" src="./jquery.js"></script>
 <script type="text/javascript">
 
 $.ajaxSetup({
@@ -73,14 +75,13 @@ function nicCheck(nicname){
 
 
 </script>
-<style type="text/css">
-
-</style>
 </head>
 <body>
-<div class="content" style="width:80%;text-align:center;align:center">
-	<h2><span class="glyphicon glyphicon-pencil"></span>
-	회원수정</h2>
+<BR><BR>
+
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 정보 수정</h2>
+<br><BR>
 	
 		<form name="frm" method="post" action="./update" onsubmit="return incheck(this)">
 		
@@ -89,7 +90,7 @@ function nicCheck(nicname){
 			<input type="hidden" name="word" value="${param.word }">
 			<input type="hidden" name="nowPage" value="${param.nowPage }">
 		
-			<table>
+			<table class="table" style="width:60%; margin: 0 auto;">
 				<tr>
 					<th>아이디</th>
 					<td style=text-align:left>${memberDTO.id }</td>
@@ -122,6 +123,7 @@ function nicCheck(nicname){
 			
 			
 			</table>
+			<br><br>
 
 		<input type="submit" value="회원수정">
 		<input type="button" value="취소" onclick="history.back()">
@@ -129,6 +131,6 @@ function nicCheck(nicname){
 	
 	</form>
 		</div>
-
+<br><br>
 </body>
 </html>

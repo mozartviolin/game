@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({
     error: function(jqXHR, exception) {
@@ -86,12 +90,14 @@ function pwfind(){
 </script>
 </head>
 <body>
+<BR><BR>
 
-<div style="text-align: center; width:80%;">
-
-<h3>아이디 찾기</h3>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 아아디 찾기</h2>
+<br><BR>
+	
 <form name="frm" method="post">
-<table>
+<table class="table" style="width:30%; margin: 0 auto;">
 
 <tr>
 	<th>이름</th>
@@ -112,10 +118,12 @@ function pwfind(){
 <hr><br><BR>
 
 
-<h3>비밀번호 찾기</h3>
+<h2 style="font-style: oblique;"> 비밀번호 찾기</h2>
+<br><BR>
+
 <form name="frm2" method="post">
 
-<table>
+<table class="table" style="width:30%; margin: 0 auto;">
 
 <tr>
 	<th>아이디</th>
@@ -128,6 +136,7 @@ function pwfind(){
 
 </table>
 
+
 <input type="button" value="찾기" onclick="pwfind()">
 <input type="reset" value="취소">
 
@@ -135,6 +144,6 @@ function pwfind(){
 
 <div id="pwresult"></div>
 </div>
-
+<br><BR><br><BR>
 </body>
 </html>

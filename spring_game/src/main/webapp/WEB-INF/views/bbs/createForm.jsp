@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
@@ -45,13 +50,16 @@ function incheck(f){
 
 </head>
 <body>
+<BR><BR>
 
-<div style="width:80%; text-align: center;">
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 게시글 작성</h2>
+<br>
 
 <form name="frm" method="post" enctype="multipart/form-data" action="./create"
 	onsubmit="return incheck(this)">
 
-<table style="width:60%; text-align: center;">
+<table class="table" style="width:60%; margin: 0 auto;">
 	
 <tr>
 	<th>말머리</th>
@@ -61,6 +69,7 @@ function incheck(f){
 	<option value="A01">오목</option>
 	<option value="A02">숫자야구</option>
 	<option value="A03">벽돌깨기</option>
+	<option value="A04">폭탄해체</option>
 	<option value="A10">기타</option>
 	</select>
 	</td>
@@ -68,7 +77,7 @@ function incheck(f){
 <tr>
 	<th>제목</th>
 	<td>
-	<input type="text" name="subject" size="15" required="required">
+	<input type="text" name="subject" size="25" required="required">
 	</td>
 </tr>
 <tr>
@@ -85,7 +94,7 @@ function incheck(f){
 </tr>
 <tr>
 	<th>비밀번호</th>
-	<td><input type="password" name="passwd" required="required"></td>
+	<td><input type="password" name="passwd" size="25" required="required"></td>
 </tr>
 	
 </table>
@@ -99,6 +108,6 @@ function incheck(f){
 </form>
 
 </div>
-
+<BR><BR>
 </body>
 </html>

@@ -1,93 +1,102 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/ssi/ssi.jsp" %>  
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/ssi/ssi.jsp" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-<style type="text/css">
-
-img{
-	width: 50%;
-	heigh: 35%;
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<style>
+body {
+	font-family: "Lato", sans-serif
 }
 
+.mySlides {
+	display: none
+}
 </style>
+
 
 </head>
 <body>
 
 <!-- 상단 메뉴 -->
-<div style="background-color: #EEEEEE;">
-<table class="table">
-  <tr>
-    <td class="td">
-        <img class="img" src="${root}/images/main.jpg">
-    </td>
-  </tr>
-  
-  <tr>
-    <td class="td">
-    <ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link active" href="${root}">홈</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">게시판</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="${root}/bbs/create">글쓰기</a>
-      <a class="dropdown-item" href="${root}/bbs/list">목록</a>
-    </div>
-  </li>
- 
 
-  <c:choose>
-  	<c:when test="${empty id }">
-      <li class="nav-item"><a class="nav-link" href="${root}/member/agree">Sign Up</a></li>
-      <li class="nav-item"><a class="nav-link" href="${root}/member/login">Login</a></li>
-  	</c:when>
-  	<c:otherwise>
-  		<c:if test="${grade!='1' }">
-	      <li class="nav-item"><a class="nav-link" href="${root}/member/read">My Info</a></li>      
-	      <li class="nav-item"><a class="nav-link" href="${root}/member/delete">회원탈퇴</a></li>
-  		</c:if>
-	      <li class="nav-item"><a class="nav-link" href="${root}/member/logout">LogOut</a></li>
-  	</c:otherwise>
-  </c:choose> 
-  
-  <c:if test="${not empty id && grade=='1' }">
-	     <li id="admin"><a class="nav-link" href="${root }/admin/list">회원목록</a></li>
-  </c:if>
+	<!-- Navbar -->
+	<div class="w3-top">
+		<div class="w3-bar w3-black w3-card">
+			<a
+				class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+				href="javascript:void(0)" onclick="myFunction()"
+				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> 
+				
+			<a href="${root}" class="w3-bar-item w3-button w3-padding-large">홈</a> 
+			<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">자유게시판</a>
+			<a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+			<a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+			
+			<div class="w3-dropdown-hover w3-hide-small">
+				<button class="w3-padding-large w3-button" title="More">
+					MORE <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="w3-dropdown-content w3-bar-block w3-card-4">
+				
+				<c:choose>
+			  	<c:when test="${empty id }">
+			      <a class="w3-bar-item w3-button" href="${root}/member/agree">회원가입</a>
+			      <a class="w3-bar-item w3-button" href="${root}/member/login">로그인</a>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<c:if test="${grade!='1' }">
+				     <a class="w3-bar-item w3-button" href="${root}/member/read">나의 정보</a> 
+				     <a class="w3-bar-item w3-button" href="${root}/member/delete">회원탈퇴</a>
+			  		</c:if>
+				     <a class="w3-bar-item w3-button" href="${root}/member/logout">로그아웃</a>
+			  	</c:otherwise>
+			  </c:choose> 
+			  
+			  <c:if test="${not empty id && grade=='1' }">
+				   <a class="w3-bar-item w3-button" href="${root }/admin/list">회원목록</a>
+			  </c:if>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+	<div id="navDemo"
+		class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top"
+		style="margin-top: 46px">
+		<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large"
+			onclick="myFunction()">자유게시판</a> 
+		
+		<a href="#tour"	class="w3-bar-item w3-button w3-padding-large"
+			onclick="myFunction()">TOUR</a>
+			
+		<a href="#contact" class="w3-bar-item w3-button w3-padding-large"
+			onclick="myFunction()">CONTACT</a> 
+		
+		<a href="#"	class="w3-bar-item w3-button w3-padding-large" 
+			onclick="myFunction()">MERCH</a>
+	</div>
 
-    </ul>
-    </td> 
-  </tr>
- 
-</table>
-</div>
 <!-- 상단 메뉴 끝 -->
- 
+<BR><BR>
  
  
 <!-- 내용 시작 -->
-<div style="width: 100%; padding-top: 10px;">

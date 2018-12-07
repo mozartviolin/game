@@ -6,13 +6,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
+<br><BR>
+<div style="width:80%;text-align:center; margin: 0 auto;">
 
-<div style="width:80%;text-align:center;">
-
-<h2>회원가입 처리</h2>
+<h2 style="font-style: oblique;">회원가입 처리</h2>
+<br><BR>
 
 <c:choose>
 	<c:when test="${flag }">
@@ -30,6 +36,6 @@
 </c:choose>
 
 </div>
-
+<br><BR>
 </body>
 </html>

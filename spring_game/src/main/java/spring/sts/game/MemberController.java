@@ -28,6 +28,12 @@ public class MemberController {
 	private MemberDAO memberDAO;
 	
 	
+	@RequestMapping("/member/callback")
+	public String callback() {
+		
+		return "/member/callback";
+	}
+	
 	@RequestMapping(value="/member/delete", method=RequestMethod.GET)
 	public String delete(String id, HttpSession session, Model model) {
 		
@@ -308,9 +314,21 @@ public class MemberController {
 		return "/member/login";
 	}
 	
-	@RequestMapping(value="/member/login", method=RequestMethod.POST)
+	@RequestMapping("/member/loginc")
 	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, HttpServletResponse response,
 			Model model, HttpServletRequest request) {
+		
+		String uniqId = request.getParameter("uniqId");
+		String nickName = request.getParameter("nickName");
+		
+		if(uniqId != null && nickName != null) {
+			
+			session.setAttribute("id", uniqId);
+			session.setAttribute("grade", "0");
+			session.setAttribute("nicname", nickName);
+			
+			return "redirect:/";
+		}
 		
 		String id = (String)map.get("id");
 		boolean flag = memberDAO.loginCheck(map);

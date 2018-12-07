@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.bbs.BbsDAO;
 import spring.model.bbs.BbsDTO;
@@ -64,7 +65,6 @@ public class BbsController {
 		}
 		
 	}
-	
 	
 	@RequestMapping("/bbs/rupdate")
 	public String rupdate(BreplyDTO breplyDTO, Model model, String nowPage, String col, 
@@ -149,7 +149,7 @@ public class BbsController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
-		int totalPage = (int)(Math.ceil((double)total/5));
+		int totalPage = (int)(Math.ceil((double)total/10));
 		
 		boolean pflag = bbsDAO.checkPW(map);
 		
@@ -158,7 +158,7 @@ public class BbsController {
 			try {
 				if(bbsDAO.delete(bbsno)) {
 					
-					if(nowPage!=1 && nowPage==totalPage && total%5==1) {
+					if(nowPage!=1 && nowPage==totalPage && total%10==1) {
 						nowPage = nowPage - 1;
 					}
 					
@@ -381,7 +381,7 @@ public class BbsController {
 		if(col.equals("total")) word = "";
 		
 		int nowPage = 1;
-		int recordPerPage = 5;
+		int recordPerPage = 10;
 		if(request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}

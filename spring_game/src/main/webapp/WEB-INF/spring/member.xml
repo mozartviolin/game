@@ -12,6 +12,18 @@
         <put-attribute name="title" value="기본페이지" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/home.jsp" /> 
     </definition>   
+	<definition name="/error/error" extends="main"> 
+        <put-attribute name="title" value="시스템 오류" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/error/error.jsp" /> 
+    </definition>   
+	<definition name="/error/passwdError" extends="main"> 
+        <put-attribute name="title" value="비밀번호 오류" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/error/passwdError.jsp" /> 
+    </definition>   
+    <definition name="/member/callback" extends="main"> 
+        <put-attribute name="title" value="네이버로그인" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/member/callback.jsp" /> 
+    </definition>   
     <definition name="/member/agree" extends="main"> 
         <put-attribute name="title" value="member 동의" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/member/agree.jsp" /> 

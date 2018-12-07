@@ -6,6 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <title>Insert title here</title>
 
 <script type="text/javascript">
@@ -32,10 +38,14 @@ function fileDown(filename){
 
 </head>
 <body>
+<br><BR>
 
+<div style="width:80%; text-align: center; margin: 0 auto;">
 
-<div style="width:80%; text-align: center;">
-<div id="search">
+<h2 style="font-style: oblique;"> 자유게시판</h2>
+<br>
+
+<div>
 <form action="./list" method="post">
 	
 	<select name="col">
@@ -43,8 +53,8 @@ function fileDown(filename){
 		<option value="nicname"
 		<c:if test="${col=='nicname' }">selected</c:if>
 		>작성자</option>
-		<option value="title"
-		<c:if test="${col=='title' }">selected</c:if>
+		<option value="subject"
+		<c:if test="${col=='subject' }">selected</c:if>
 		>제목</option>
 		<option value="total">전체</option>
 	</select>
@@ -55,9 +65,9 @@ function fileDown(filename){
 	
 </form>
 </div>
+<BR>
 
-
-<table style="width:60%; text-align: center;">
+<table class="table" style="width:60%; margin: 0 auto;">
 <thead>
 	<tr>
 		<th>글번호</th>
@@ -122,9 +132,10 @@ function fileDown(filename){
 	
 </table>
 
+<br>
 ${paging }
 
 </div>
-
+<BR><BR>
 </body>
 </html>
