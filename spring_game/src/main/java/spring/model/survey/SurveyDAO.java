@@ -29,8 +29,8 @@ public class SurveyDAO implements ISurveyDAO{
 	}
 
 	@Override
-	public List list(Map map) throws Exception {
-		return mybatis.selectList("survey.list", map);
+	public List list(Map map2) throws Exception {
+		return mybatis.selectList("survey.list", map2);
 	}
 
 	@Override
@@ -69,6 +69,11 @@ public class SurveyDAO implements ISurveyDAO{
 	public List oneToOneList(SqlSessionFactory sqlMapper) throws Exception {
 		 
 		return  mybatis.selectList("survey.oneToOneList");
+	}
+	
+	public List oneToManyList(SqlSessionFactory sqlMapper) throws Exception {
+		
+		return  mybatis.selectList("survey.oneToManyList");
 	}
 
 }

@@ -33,24 +33,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<select id="list" parameterType="Map" resultType="QabbsDTO">
-		select qano, nicname, category, subject, content, qadate, viewcount, r
+		select qano, nicname, category, subject, content, qadate, viewcount, grpno, indent, ansnum , 
+			refnum, r
 		from(
-			select qano, nicname, category, subject, content, qadate, viewcount,
-			rownum as r
+			select qano, nicname, category, subject, content, qadate, viewcount, grpno, indent, 
+			ansnum, refnum, rownum as r
 			from(
-				select qano, nicname, category, subject, content, qadate, viewcount
-				from qabbs		
-				<where>
-					<choose>
-						<when test="category=='category'">
-	           				category like '%'||#{col2}||'%'
-	           			</when>					    
-	           		</choose>      
-           			</where>  				
+				select qano, nicname, category, subject, content, qadate, 
+				viewcount, grpno, indent, ansnum, refnum
+				from qabbs
 				<where>
 					<choose>
 						<when test="col=='category'">
-	           				category like '%'||#{word}||'%'
+							(category like '%'||#{word}||'%')
 	           			</when>
 					    <when test="col=='subject'">
 	           	 			subject like '%'||#{word}||'%'
@@ -59,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	           				content like '%'||#{word}||'%'
 	            		</when>        
 	           		</choose>      
-           		</where>  
+           		</where> 
            		order by grpno desc, ansnum           
 				)
 			)      
@@ -122,5 +117,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from qabbs
 		where refnum = #{qano}
 	</select>
+	
+	<select id="rcount" parameterType="int" resultType="int">
+     	SELECT count(*) FROM qreply
+    	 	WHERE qano = #{qano}
+    </select>
 	
 </mapper>

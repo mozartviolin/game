@@ -8,8 +8,10 @@
 </head>
 <body>
 <div>
+<BR>
+<BR>
 
-<h2>일대일게시판 삭제</h2>
+<h2> Q&A게시판 삭제 </h2>
 	 
 	<FORM name='frm' method='POST' action='./delete' onsubmit="return incheck(this)">
 		<input type="hidden" name="qano" value="${param.qano}"> 
@@ -40,6 +42,9 @@
  -->
 
  </div>
+
+<BR>
+<BR>
 
 </body>
 </html>

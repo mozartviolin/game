@@ -5,11 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- ckeditor -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
+ <script type="text/JavaScript">
+   window.onload=function(){
+     CKEDITOR.replace('content');
+  };
+ </script>
+
 </head>
 
 <body>
+<BR>
+<BR>
 
-<h2>일대일게시판 수정하기</h2>
+<h2>Q&A게시판 수정하기</h2>
  
 <FORM name='frm' method='POST' action='./update' onsubmit="return incheck(this)">
 <input type="hidden" name="qano" value="${qabbsDTO.qano}"> 
@@ -28,8 +39,6 @@
 		<td>
 		<input type="radio" name="category" value="문의" checked="checked" /> 문의
 		<input type="radio" name="category" value="신고" /> 신고
-		<!-- 관리자만 체크 할 수 있게 할거임  -->
-		<input type="radio" name="category" value="답변" /> 답변
 		</td>
 	</tr>
 	<tr>
@@ -52,5 +61,7 @@
   </DIV>
 </FORM>
 
+<BR>
+<BR>
 </body>
 </html>

@@ -28,8 +28,7 @@ public class AnswerDAO implements IAnswerDAO{
 
 	@Override
 	public List list(Map map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("answer.list", map);
 	}
 
 	@Override
@@ -66,14 +65,20 @@ public class AnswerDAO implements IAnswerDAO{
 		return flag;
 	}
 	
-	public int result1View(int subjectno) {
-		return mybatis.selectOne("answer.result1View", subjectno);
+	public int result1View(int sno) {
+		return mybatis.selectOne("answer.result1View", sno);
 	}
-	public int result2View(int subjectno) {
-		return mybatis.selectOne("answer.result2View", subjectno);
+	public int result2View(int sno) {
+		return mybatis.selectOne("answer.result2View", sno);
 	}
-	public int result3View(int subjectno) {
-		return mybatis.selectOne("answer.result3View", subjectno);
+	public int result3View(int sno) {
+		return mybatis.selectOne("answer.result3View", sno);
+	}
+	
+	
+	public Object resultread(Map map) throws Exception {
+			
+		return mybatis.selectOne("answer.resultread", map);		
 	}
 
 }

@@ -37,12 +37,12 @@
 						window.chartColors.yellow,
 						window.chartColors.green,
 					],
-					label: 'Dataset 1'
+					label: 'Dataset 2'
 				}],
 				labels: [
-					'불만족',
-					'보통',
-					'만족',					
+					'안하고싶다',
+					'생각해봄',
+					'다시하고싶다',					
 				]
 			},
 			options: {
@@ -62,15 +62,12 @@
 			window.myPie.update();
 		});
 	</script>
-	<div id="canvas-holder2" style="width:40%">
-		<canvas id="chart-area"></canvas>
-	</div>	
 	
 <hr>
 
 <div>
 <button onclick="location.href='${pageContext.request.contextPath }/'">홈</button>
-<button onclick="location.href='${pageContext.request.contextPath }/survey/result1'">결과보기</button>
+<button onclick="location.href='${pageContext.request.contextPath }/survey/result2'">결과보기</button>
 </div>
 <hr>
 

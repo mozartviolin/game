@@ -29,7 +29,7 @@ public class QabbsDAO implements IQabbsDAO{
 	public List list(Map map) throws Exception {
 		return mybatis.selectList("qabbs.list", map);
 	}
-
+	
 	@Override
 	public Object read(Object pk) throws Exception {
 		int qano = (Integer)pk;		

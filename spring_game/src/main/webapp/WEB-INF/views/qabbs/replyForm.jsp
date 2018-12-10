@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>등록</h2>
+<BR>
+<BR>
+
+<h2>Q&A게시판 답변등록</h2>
  
 <FORM name='frm' method='POST' action='./reply' onsubmit="return incheck(this)">
 <!-- 답변있는 부모글의 삭제를 못하게 하기 위해서 -->
