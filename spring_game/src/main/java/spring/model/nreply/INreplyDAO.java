@@ -4,4 +4,5 @@ import spring.model.stdinter.DAOSTDInter;
 
 public interface INreplyDAO extends DAOSTDInter {
 
+
 }

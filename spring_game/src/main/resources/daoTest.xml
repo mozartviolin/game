@@ -38,36 +38,18 @@
 
 	
 	
-	<bean id="dao" class="spring.model.bbs.BbsDAO"
-		   p:mybatis-ref="sqlSession"
+	<bean id="notice" class="spring.model.notice.NoticeDAO"
+		   p:mysql-ref="sqlSession"
 	/>
-	
-	<bean id="memo" class="spring.model.memo.MemoDAO"
-		   p:mybatis-ref="sqlSession"
+	<bean id="nreply" class="spring.model.nreply.NreplyDAO"
+		   p:mysql-ref="sqlSession"
 	/>
-	
-	<bean id="team" class="spring.model.team.TeamDAO"
-		   p:mybatis-ref="sqlSession"
+	<bean id="message" class="spring.model.message.MessageDAO"
+		   p:mysql-ref="sqlSession"
 	/>
-	
 	<bean id="member" class="spring.model.member.MemberDAO"
-		   p:mybatis-ref="sqlSession"
+		   p:mysql-ref="sqlSession"
 	/>
 	
-	<bean id="img" class="spring.model.img.ImgDAO"
-		   p:mybatis-ref="sqlSession"
-	/>
-	
-	<bean id="reply" class="spring.model.bbs.ReplyDAO"
-		   p:mybatis-ref="sqlSession"
-	/>
-	
-	<bean id="board" class="spring.model.board.BoardDAO"
-		   p:mybatis-ref="sqlSession"
-	/>
-	
-	<bean id="breply" class="spring.model.board.ReplyDAO"
-		   p:mybatis-ref="sqlSession"
-	/>
 	
 </beans>

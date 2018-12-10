@@ -9,6 +9,8 @@ public List list(Map map)throws Exception;
 public Object read(Object pk)throws Exception;
 public boolean update(Object dto)throws Exception;
 public boolean delete(Object pk)throws Exception;
-public int total(Map map)throws Exception;
+int total(Object pk) throws Exception;
+int total(Map map) throws Exception;
+
  
 }

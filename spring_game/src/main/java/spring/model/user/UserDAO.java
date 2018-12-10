@@ -43,4 +43,10 @@ public class UserDAO implements DAOSTDInter{
 		return 0;
 	}
 
+	@Override
+	public int total(Object pk) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

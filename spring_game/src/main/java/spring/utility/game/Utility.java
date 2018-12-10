@@ -270,18 +270,13 @@ public class Utility {
 	}
 
 	public static String getCodeValue(String code) {
-		String value = null;
+	String value = null;
 		
 		Hashtable codes = new Hashtable();
-		codes.put("A01", "회사원");
-		codes.put("A02", "전산관련직");
-		codes.put("A03", "연구전문직");
-		codes.put("A04", "각종학교학생");
-		codes.put("A05", "일반자영업");
-		codes.put("A06", "공무원");
-		codes.put("A07", "의료인");
-		codes.put("A08", "법조인");
-		codes.put("A09", "종교/언론/예술인");
+		codes.put("A01", "오목");
+		codes.put("A02", "숫자야구");
+		codes.put("A03", "벽돌깨기");
+		codes.put("A04", "폭탄해체");
 		codes.put("A10", "기타");
 		
 		value = (String)codes.get(code);
@@ -289,7 +284,8 @@ public class Utility {
 		return value;
 	}
 
-	public static String rpaging3(int total, int nowPage, int recordPerPage, String col, String word, int bbsno,
+
+	public static String rpaging3(int total, int nowPage, int recordPerPage, String col, String word, int n_no,
 			int nPage, String url) {
 
 		int pagePerBlock = 10; // 블럭당 페이지 수
@@ -333,7 +329,7 @@ public class Utility {
 		int _nPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
 		if (nowGrp >= 2) {
 			str.append("<span class='span_box_1'><A href='./"+url+"?col=" + col
-					+ "&bbsno=" + bbsno + "&nPage=" + _nPage
+					+ "&n_no=" + n_no + "&nPage=" + _nPage
 					+ "&word=" + word + "&nowPage="
 					+ nowPage + "'>이전</A></span>");
 		}
@@ -347,7 +343,7 @@ public class Utility {
 				str.append("<span class='span_box_2'>" + i + "</span>");
 			} else {
 				str.append("<span class='span_box_1'><A href='./"+url+"?col=" + col 
-						+ "&bbsno=" + bbsno + "&nPage=" + i
+						+ "&n_no=" + n_no + "&nPage=" + i
 						+ "&word=" + word + "&nowPage=" + nowPage
 						+ "'>" + i + "</A></span>");
 			}
@@ -356,7 +352,7 @@ public class Utility {
 		_nPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
 		if (nowGrp < totalGrp) {
 			str.append("<span class='span_box_1'><A href='./"+url+"?col=" + col 
-					+ "&bbsno=" + bbsno + "&nPage=" + _nPage
+					+ "&n_no=" + n_no + "&nPage=" + _nPage
 					+ "&word=" + word + "&nowPage="
 					+ nowPage + "'>다음</A></span>");
 		}
@@ -365,7 +361,7 @@ public class Utility {
 		return str.toString();
 	}
 	
-	public static String bpaging3(int total, int nowPage, int recordPerPage, String col, String word, int num,
+	public static String npaging3(int total, int nowPage, int recordPerPage, String col, String word, int num,
 			int nPage, String url) {
 		
 		int pagePerBlock = 10; // 블럭당 페이지 수
