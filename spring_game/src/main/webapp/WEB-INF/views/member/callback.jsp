@@ -23,7 +23,7 @@
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "{JDzSdswkTtUR8xk3MIXo}",
-				callbackUrl: "{http://localhost:8000/game/member/callback}",
+				calUrl: "{http://localhost:8000/game/member/callback}",
 				isPopup: false,
 				callbackHandle: true
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */

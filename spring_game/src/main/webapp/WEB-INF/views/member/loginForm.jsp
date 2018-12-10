@@ -51,12 +51,12 @@
 			</TR>
 		</TABLE>
 
-		<div style="text-align: center;">
+		<div style="text-align: center; margin: 0 auto;">
 		<BR><BR>
 			<input type='submit' value='로그인'> 
 			<input type='button' value='회원가입' onclick="location.href='agree'">
 			<input type='button' value='ID/Password 찾기' onclick="location.href='idpwfind'">
-		 &nbsp;&nbsp;&nbsp;&nbsp;<br>
+		 &nbsp;&nbsp;&nbsp;&nbsp;<br><BR>
 		 
 		 <!-- 네이버아이디로로그인 버튼 노출 영역 -->
 		 <div id="naverIdLogin"></div>
@@ -69,12 +69,14 @@
 						clientId: "JDzSdswkTtUR8xk3MIXo",
 						callbackUrl: "http://localhost:8000/game/member/callback",
 						isPopup: false, /* 팝업을 통한 연동처리 여부 */
-						loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+						loginButton: {color: "green", type: 3, height: 50} /* 로그인 버튼의 타입을 지정 */
 					}
 				);
 				
 				/* 설정정보를 초기화하고 연동을 준비 */
 				naverLogin.init();
+				
+				
 				
 			</script>
 		<!-- // 네이버아이디로로그인 초기화 Script -->

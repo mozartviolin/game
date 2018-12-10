@@ -1,5 +1,9 @@
 package spring.sts.game;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -129,9 +133,9 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/member/read")
+	
+	@RequestMapping(value="/member/read", method=RequestMethod.GET)
 	public String read(String id, Model model, HttpServletRequest request) {
-		
 		
 		if(id == null) {
 			id = (String)request.getSession().getAttribute("id");
@@ -145,6 +149,13 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("memberDTO", memberDTO);
+		return "/member/read";
+	}
+	
+	@RequestMapping("member/read")
+	public String read(MemberDTO memberDTO, Model model) {
+		
 		
 		float per = 0;
 		
@@ -157,6 +168,7 @@ public class MemberController {
 		
 		return "/member/read";
 	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/member/pwfind", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
@@ -319,7 +331,7 @@ public class MemberController {
 			Model model, HttpServletRequest request) {
 		
 		String uniqId = request.getParameter("uniqId");
-		String nickName = request.getParameter("nickName");
+		String nickName = request.getParameter("nickName"); 
 		
 		if(uniqId != null && nickName != null) {
 			
