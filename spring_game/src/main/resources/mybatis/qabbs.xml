@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select qano, nicname, category, subject, content, qadate, viewcount, grpno, indent, 
 			ansnum, refnum, rownum as r
 			from(
-				select qano, nicname, category, subject, content, qadate, 
+				select qano, nicname, category, subject, content, to_char(qadate,'yyyy-mm-dd') as qadate, 
 				viewcount, grpno, indent, ansnum, refnum
 				from qabbs
 				<where>
