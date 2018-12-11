@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Hashtable;
@@ -14,14 +12,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
+import spring.model.qabbs.QReplyDAO;
 
 public class Utility {
 	
-//	public static int rcount(int bbsno, ReplyDAO rdao) {
-//		return rdao.rcount(bbsno);
-//	}
-
+	public static int rcount(int qano, QReplyDAO qreplyDAO) {
+		return qreplyDAO.rcount(qano);
+	}
+	
 	public static String saveFileSpring(
 			MultipartFile multipartFile, String basePath) {//basePath는 storage
 		
@@ -115,7 +113,7 @@ public class Utility {
 
 		return flag;
 	}
-
+	
 	/**
 	 * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
 	 * 18 19 20 [다음]
@@ -273,15 +271,10 @@ public class Utility {
 		String value = null;
 		
 		Hashtable codes = new Hashtable();
-		codes.put("A01", "회사원");
-		codes.put("A02", "전산관련직");
-		codes.put("A03", "연구전문직");
-		codes.put("A04", "각종학교학생");
-		codes.put("A05", "일반자영업");
-		codes.put("A06", "공무원");
-		codes.put("A07", "의료인");
-		codes.put("A08", "법조인");
-		codes.put("A09", "종교/언론/예술인");
+		codes.put("A01", "오목");
+		codes.put("A02", "숫자야구");
+		codes.put("A03", "벽돌깨기");
+		codes.put("A04", "폭탄해체");
 		codes.put("A10", "기타");
 		
 		value = (String)codes.get(code);
@@ -438,6 +431,78 @@ public class Utility {
 		}
 		str.append("</DIV>");
 		
+		return str.toString();
+	}
+	
+	public static String rpaging(int total, int nowPage, int recordPerPage,
+			int nPage, String url) {
+		int pagePerBlock = 10; // 블럭당 페이지 수
+		int totalPage = (int) (Math.ceil((double) total / recordPerPage)); // 전체 페이지 //ceil 올림
+		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));// 전체 그룹
+		int nowGrp = (int) (Math.ceil((double) nPage / pagePerBlock)); // 현재 그룹
+		int startPage = ((nowGrp - 1) * pagePerBlock) + 1; // 특정 그룹의 페이지 목록 시작
+		int endPage = (nowGrp * pagePerBlock); // 특정 그룹의 페이지 목록 종료
+
+		StringBuffer str = new StringBuffer();
+
+		str.append("<style type='text/css'>");
+		str.append("  #paging {text-align: center; margin-top: 5px; font-size: 1em;}");
+		str.append("  #paging A:link {text-decoration:none; color:black; font-size: 1em;}");
+		str.append("  #paging A:hover{text-decoration:none; background-color: #CCCCCC; color:black; font-size: 1em;}");
+		str.append("  #paging A:visited {text-decoration:none;color:black; font-size: 1em;}");
+		str.append("  .span_box_1{");
+		str.append("    text-align: center;");
+		str.append("    font-size: 1em;");
+		str.append("    border: 1px;");
+		str.append("    border-style: solid;");
+		str.append("    border-color: #cccccc;");
+		str.append("    padding:1px 6px 1px 6px; /*위, 오른쪽, 아래, 왼쪽*/");
+		str.append("    margin:1px 2px 1px 2px; /*위, 오른쪽, 아래, 왼쪽*/");
+		str.append("  }");
+		str.append("  .span_box_2{");
+		str.append("    text-align: center;");
+		str.append("    background-color: #668db4;");
+		str.append("    color: #FFFFFF;");
+		str.append("    font-size: 1em;");
+		str.append("    border: 1px;");
+		str.append("    border-style: solid;");
+		str.append("    border-color: #cccccc;");
+		str.append("    padding:1px 6px 1px 6px; /*위, 오른쪽, 아래, 왼쪽*/");
+		str.append("    margin:1px 2px 1px 2px; /*위, 오른쪽, 아래, 왼쪽*/");
+		str.append("  }");
+		str.append("</style>");
+		str.append("<DIV id='paging'>");
+//	     str.append("현재 페이지: " + nowPage + " / " + totalPage + "  "); 
+
+		int _nPage = (nowGrp - 1) * pagePerBlock; // 10개 이전 페이지로 이동
+		if (nowGrp >= 2) {
+			str.append("<span class='span_box_1'><A href='./"+url + "&nPage=" + _nPage 
+					+ "&nowPage="
+					+ nowPage + "'>이전</A></span>");
+		}
+
+		for (int i = startPage; i <= endPage; i++) {
+			if (i > totalPage) {
+				break;
+			}
+
+			if (nPage == i) {
+				str.append("<span class='span_box_2'>" + i + "</span>");
+			} else {
+				str.append("<span class='span_box_1'><A href='./"+url + "&nPage=" + i
+						+ "&nowPage=" + nowPage
+						+ "'>" + i + "</A></span>");
+			}
+		}
+
+		_nPage = (nowGrp * pagePerBlock) + 1; // 10개 다음 페이지로 이동
+		if (nowGrp < totalGrp) {
+			str.append("<span class='span_box_1'><A href='./"+url + "&nPage=" + _nPage
+					+ "&nowPage="
+					+ nowPage + "'>다음</A></span>");
+		}
+		str.append("</DIV>");
+
 		return str.toString();
 	}
 

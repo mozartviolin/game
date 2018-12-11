@@ -70,4 +70,20 @@
 		   p:mybatis-ref="sqlSession"
 	/>
 	
+	<bean id="qabbs" class="spring.model.qabbs.QabbsDAO"
+		   p:mybatis-ref="sqlSession"
+	/>
+	
+	<bean id="survey" class="spring.model.survey.SurveyDAO"
+		   p:mybatis-ref="sqlSession"
+	/>
+	
+	<bean id="answer" class="spring.model.answer.AnswerDAO"
+		   p:mybatis-ref="sqlSession"
+	/>
+	
+	<bean id="qreply" class="spring.model.qabbs.QReplyDAO"
+		   p:mybatis-ref="sqlSession"
+	/>
+	
 </beans>

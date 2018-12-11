@@ -36,7 +36,14 @@
         <put-attribute name="title" value="qabbs 조회" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/qabbs/read.jsp" /> 
     </definition>  
-    
+	<definition name="/qabbs/viewCookies" extends="main"> 
+        <put-attribute name="title" value="qabbs 쿠키보기" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/viewCookies.jsp" /> 
+    </definition>  
+    <definition name="/qabbs/viewqabbs" extends="main"> 
+        <put-attribute name="title" value="qabbs 쿠키확인" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/qabbs/viewqabbs.jsp" /> 
+    </definition>      
    
     
    

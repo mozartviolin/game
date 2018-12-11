@@ -19,8 +19,12 @@
         <put-attribute name="body" value="/WEB-INF/views/survey/survey.jsp" /> 
     </definition>     
     <definition name="/survey/result" extends="main"> 
-        <put-attribute name="title" value="survey 설문조사" ></put-attribute> 
+        <put-attribute name="title" value="survey 설문조사 결과" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/survey/result.jsp" /> 
+    </definition>     
+    <definition name="/survey/result2" extends="main"> 
+        <put-attribute name="title" value="survey 설문조사 결과2" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/survey/result2.jsp" /> 
     </definition>     
         
    
