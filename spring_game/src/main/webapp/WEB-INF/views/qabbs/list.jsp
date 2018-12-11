@@ -111,16 +111,32 @@ function salist(){
 				<c:choose>
 				<c:when test ='${empty sessionScope.nicname }'>
 				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
-				${qabbsDTO.subject }
+				<img src='${pageContext.request.contextPath }/images/locked.png'>
+				${qabbsDTO.subject }				
 				<c:if test="${rcount>0 }">
-            	<span style="color:red;">(${rcount})</span>
+            	<span style="color:black;">(${rcount})</span>
             	</c:if>
 				</c:when>
-				<c:otherwise>
+				<c:when test ='${sessionScope.grade == 1}'>
 				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
 				<c:if test="${rcount>0 }">
             	<span style="color:red;">(${rcount})</span>
+          		</c:if>				
+				</c:when>
+				<c:when test ='${sessionScope.nicname == qabbsDTO.nicname}'>
+				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
+				<c:if test="${rcount>0 }">
+            	<span style="color:red;">(${rcount})</span>
+          		</c:if>		
+				</c:when>
+				<c:otherwise>
+				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<img src='${pageContext.request.contextPath }/images/locked.png'>
+				${qabbsDTO.subject }
+				<c:if test="${rcount>0 }">
+            	<span style="color:black;">(${rcount})</span>
           		</c:if>
           		</c:otherwise>
           		</c:choose>

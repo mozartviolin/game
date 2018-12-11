@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>survey 결과</title>
 
 <!-- 그래프용 js -->
 <script src="https://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>survey 결과창</h2>
+<h2>게임을 다시 플레이할 의향이 있는지에 대한 설문조사 결과창</h2>
 
 <div id="canvas-holder" style="width:40%">
 		<canvas id="chart-area"></canvas>
@@ -40,9 +40,9 @@
 					label: 'Dataset 2'
 				}],
 				labels: [
-					'안하고싶다',
-					'생각해봄',
-					'다시하고싶다',					
+					'다시 안하고싶다',
+					'생각해 보겠다',
+					'다시 해보고 싶다',					
 				]
 			},
 			options: {
@@ -67,7 +67,8 @@
 
 <div>
 <button onclick="location.href='${pageContext.request.contextPath }/'">홈</button>
-<button onclick="location.href='${pageContext.request.contextPath }/survey/result2'">결과보기</button>
+<button onclick="history.back()">뒤로가기</button>
+
 </div>
 <hr>
 

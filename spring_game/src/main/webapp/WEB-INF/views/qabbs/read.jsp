@@ -114,6 +114,10 @@ function rdelete(rnum){
 		<th>글쓴이</th>
 		<td>${qabbsDTO.nicname}</td>
 	</tr>
+	 <tr>
+      <th>등록일</th>
+      <td>${qabbsDTO.qadate }</td>
+    <tr>
 	
 	<tr>
 		<th>제목</th>
@@ -139,9 +143,8 @@ function rdelete(rnum){
    <!-- 댓글들 -->
  <c:forEach var="qreplyDTO" items="${qrlist }">
   <div class="rlist">
-  	작성자  :  ${qreplyDTO.nicname }<br>
+  	작성자  :  ${qreplyDTO.nicname }  &nbsp;&nbsp;&nbsp;   ||  &nbsp;  작성일  :  ${qreplyDTO.regdate}<br>
   	<p> ${qreplyDTO.content }</p>
-         작성일  :  ${qreplyDTO.regdate}
     <c:if test="${sessionScope.nicname==qreplyDTO.nicname }">
     <span style="float:right;">
   	<a href="javascript:rupdate('${qreplyDTO.rnum}','${qreplyDTO.content}')">수정</a>

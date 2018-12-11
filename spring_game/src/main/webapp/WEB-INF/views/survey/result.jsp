@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>survey 결과</title>
 
 <!-- 그래프용 js -->
 <script src="https://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h2>survey 결과창</h2>
+<h2>게임 만족도에 대한 설문조사 결과창</h2>
 
 <div id="canvas-holder" style="width:40%">
 		<canvas id="chart-area"></canvas>
@@ -70,6 +70,7 @@
 
 <div>
 <button onclick="location.href='${pageContext.request.contextPath }/'">홈</button>
+<button onclick="history.back()">뒤로가기</button>
 <button onclick="location.href='${pageContext.request.contextPath }/survey/result1'">결과보기</button>
 </div>
 <hr>

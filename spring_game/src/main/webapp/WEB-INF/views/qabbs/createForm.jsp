@@ -31,11 +31,11 @@
       <TD>     
 		<c:choose>
 		<c:when test="${not empty sessionScope.nicname }">
-		<input type="hidden" name="wname" size="20" value="${sessionScope.nicname }">
+		<input type="hidden" name="nicname" size="20" value="${sessionScope.nicname }">
 		${sessionScope.nicname }
 		</c:when>
 		<c:otherwise>
-		  <input type="text" name="wname" size="20" placeholder="닉네임을 입력하세요">
+		  <input type="text" name="nicname" size="20" placeholder="닉네임을 입력하세요">
 		</c:otherwise>
 	  </c:choose>
 	</TR>
