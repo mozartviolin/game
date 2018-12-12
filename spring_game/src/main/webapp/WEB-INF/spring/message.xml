@@ -23,5 +23,10 @@
     <definition name="/message/read" extends="main"> 
         <put-attribute name="title" value="message 조회" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/message/read.jsp" /> 
-    </definition>  
+    </definition>
+        <definition name="/message/fromlist" extends="main"> 
+        <put-attribute name="title" value="message 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/message/fromlist.jsp" /> 
+    </definition>
+      
 </tiles-definitions>

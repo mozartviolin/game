@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +35,7 @@ function mlist(){
 <title>Insert title here</title>
 </head>
 <body>
-<div class= "title"><h3>${dto.meto}의 쪽지</h3></div>
+<div class= "title" style="text-align:center;"><h3>${dto.nicname}의 쪽지</h3></div>
 <div class="content">
 <table table width=500 border=2 bordercolor=red align=center>
 		<tr width="300">
@@ -44,10 +46,20 @@ function mlist(){
 			<th>내용</th>
 			<td height="200">${dto.content}</td>
 		</tr>
+		<c:choose>
+		<c:when test="${dto.nicname==meto}">
 		<tr>
-		<th>보낸이</th>
-		<td>${dto.mefrom}</td>
+		<th>닉네임</th>
+		<td>${dto.meto}</td>
 		</tr>
+		</c:when>
+		<c:otherwise>
+		<tr>
+		<th>닉네임</th>
+		<td>${dto.nicname}</td>
+		</tr>
+		</c:otherwise>
+		</c:choose>
 		<tr>
 			<th>발신일</th>
 			<td>${dto.mdate}</td>

@@ -15,7 +15,7 @@ values((select nvl(max(mno),0)+1 as mno from message),#{meto},#{nicname},#{subje
 </insert>
 
 <select id = "read" resultType="MessageDTO" parameterType="int">
-select mno, meto, subject,content,mdate
+select mno, nicname, meto, subject,content,mdate
 from message
 where mno=#{mno}
 </select>
@@ -31,7 +31,34 @@ where mno=#{mno}
 		where mno = #{mno}
 	</update>
 
-<select id="list" parameterType="Map" resultType="MessageDTO">
+<select id="fromlist" parameterType="Map" resultType="MessageDTO">
+		
+		select mno, nicname,meto,subject,mdate,viewcnt,r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt,rownum as r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt 
+		from message
+		<where>
+			<choose>
+				<when test="col=='nicname'">
+					nicname like '%'||#{word}||'%'
+				</when>
+				<when test="col=='subject'">
+					subject like '%'||#{word}||'%'
+				</when>
+			</choose>
+			AND nicname = #{nicname}
+		</where>    
+		order by mno desc
+		)
+		 
+<![CDATA[                                                    
+)where r>=#{sno} and r<=#{eno}                                      
+]]>
+	</select>
+	
+	<select id="list" parameterType="Map" resultType="MessageDTO">
 		
 		select mno, nicname,meto,subject,mdate,viewcnt,r
 		from(

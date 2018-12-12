@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.message.MessageDAO;
 import spring.model.message.MessageDTO;
@@ -23,6 +24,23 @@ public class MessageController {
 	
 	@Autowired
 	private MessageDAO messageDAO;
+	
+	
+	@ResponseBody
+	@RequestMapping("/MessageCount")
+	public String MessageCount(Model model) {
+		
+		int cnt=messageDAO.count(1);
+		if(cnt == 0) {
+			model.addAttribute("cnt",cnt);
+		}
+		//System.out.println(cnt);
+		
+		return cnt+"";
+		
+	}
+
+
 
 
 	@RequestMapping(value = "/message/delete", method = RequestMethod.GET)
@@ -123,7 +141,7 @@ public class MessageController {
 		}
 
 		if (flag) {
-			return "redirect:/message/list";
+			return "redirect:/message/fromlist";
 
 		} else {
 			return "/error/error";
@@ -193,6 +211,66 @@ public class MessageController {
 		model.addAttribute("word", word);
 
 		return "/message/list";
+	}
+	
+	@RequestMapping("/message/fromlist")
+	public String nlist(HttpServletRequest request, Model model,HttpSession session) {
+
+		// 검색관련 처리
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+
+		if (col.equals("total"))
+			word = "";
+
+		// 페이징 관련
+		int nowPage = 1;
+		int recordPerPage = 5;
+
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+			// 넘버포맷익셉션이 일어날 수 있음. 널 값일 때 불러올 수 있기 때문
+		}
+
+		// DB에서 가져올 레코드 순번
+		int sno = ((nowPage - 1) * recordPerPage) + 1;
+		int eno = nowPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("nicname", session.getAttribute("nicname"));
+		
+		System.out.println("nicname"+session.getAttribute("nicname"));
+
+		List<MessageDTO> list = null;
+		try {
+			list = messageDAO.fromlist(map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// 전체 레코드 갯수의 필요한 매개변수(col,word). 비교해야함
+		int totalRecord = 0;
+		try {
+			totalRecord = messageDAO.total(map);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String paging = Utility.paging3(totalRecord, nowPage, recordPerPage, col, word);
+
+		model.addAttribute("list", list);
+		model.addAttribute("paging", paging);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("col", col);
+		model.addAttribute("word", word);
+
+		return "/message/fromlist";
 	}
 
 }

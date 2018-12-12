@@ -14,6 +14,63 @@
 <head>
 
 <title>Home</title>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+$.ajaxSetup({
+    error: function(jqXHR, exception) {
+        if (jqXHR.status === 0) {
+            alert('Not connect.\n Verify Network.');
+        }
+        else if (jqXHR.status == 400) {
+            alert('Server understood the request, but request content was invalid. [400]');
+        }
+        else if (jqXHR.status == 401) {
+            alert('Unauthorized access. [401]');
+        }
+        else if (jqXHR.status == 403) {
+            alert('Forbidden resource can not be accessed. [403]');
+        }
+        else if (jqXHR.status == 404) {
+            alert('Requested page not found. [404]');
+        }
+        else if (jqXHR.status == 500) {
+            alert('Internal server error. [500]');
+        }
+        else if (jqXHR.status == 503) {
+            alert('Service unavailable. [503]');
+        }
+        else if (exception === 'parsererror') {
+            alert('Requested JSON parse failed. [Failed]');
+        }
+        else if (exception === 'timeout') {
+            alert('Time out error. [Timeout]');
+        }
+        else if (exception === 'abort') {
+            alert('Ajax request aborted. [Aborted]');
+        }
+        else {
+            alert('Uncaught Error.n' + jqXHR.responseText);
+        }
+    }
+});
+
+window.onload=function(){
+	//alert("안녕");
+	$.ajax({
+		type:"GET",
+		url:"./MessageCount",
+		dataType:"text",
+		success:function(data){
+// 			alert(data);
+			$("#cnt").text(data);
+		}
+	});
+	
+
+}
+
+</script>
 </head>
 <body>
 
@@ -24,7 +81,8 @@
 
 <c:if test="${not empty sessionScope.id && sessionScope.grade == '0'}">
 <a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">나의 정보</a> &nbsp;&nbsp;&nbsp;
-<a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">쪽지함</a>
+<a href="${pageContext.request.contextPath }/message/list" class="btn btn-link">받은쪽지함 &nbsp;(<span id="cnt"></span>)</a>&nbsp;
+<a href="${pageContext.request.contextPath }/message/fromlist" class="btn btn-link">보낸쪽지함 &nbsp;</a>
 </c:if>
 </div>
 

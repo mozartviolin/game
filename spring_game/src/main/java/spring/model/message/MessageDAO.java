@@ -38,6 +38,11 @@ public class MessageDAO implements IMessageDAO{
 		return mysql.selectList("message.list",map);
 		
 	}
+	
+	@Override
+	public List fromlist(Map map) throws Exception{
+		return mysql.selectList("message.fromlist",map);
+	}
 
 	@Override
 	public Object read(Object pk) throws Exception {

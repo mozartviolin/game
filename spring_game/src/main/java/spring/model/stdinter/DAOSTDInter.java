@@ -11,6 +11,7 @@ public boolean update(Object dto)throws Exception;
 public boolean delete(Object pk)throws Exception;
 int total(Object pk) throws Exception;
 int total(Map map) throws Exception;
+List fromlist(Map map) throws Exception;
 
  
 }

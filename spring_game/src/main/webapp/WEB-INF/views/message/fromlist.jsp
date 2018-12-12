@@ -21,12 +21,12 @@
 </head>
 <body>
 <div style="width:80%; text-align:center" >
-<h1>받은쪽지함</h1>
+<h1>보낸쪽지함</h1>
  <form method="post" action="./list.do">
   <select name="col">
-  	<option value="nicname" 
-  	<c:if test="${col=='nicname'}">selected</c:if>
-  	>보낸이</option>
+  	<option value="meto" 
+  	<c:if test="${col=='meto'}">selected</c:if>
+  	>받는이</option>
   	<option value="subject"
   	<c:if test="${col=='subject'}">selected</c:if>
   	>제목</option>
@@ -41,13 +41,12 @@
 		<tr>
 			<th>수신일</th>
 			<th>제목</th>
-			<th>보낸이</th>
 			<th>받는이</th>
-			<th>조회수</th>
+			<th>보낸이</th>
+			<th>수신확인</th>
 		</tr>
-		
-		 <c:choose>
-    <c:when test="${empty list}"> 
+		<c:choose>
+		<c:when test="${empty list}"> 
 <tbody>
 	<tr>
 		<td colspan="6">등록된 글이 없습니다.</td>
@@ -60,10 +59,18 @@
 		<tr>
 			<td>${dto.mdate}</td>
 			<td><a href="javascript:read('${dto.mno}')" class="link">${dto.subject}</a></td>
-			<td>${dto.nicname}</td>
 			<td>${dto.meto}</td>
-			<td>${dto.viewcnt}</td>
-			
+			<td>${dto.nicname}</td>
+			<td>
+			<c:choose>
+			<c:when test ="${dto.viewcnt>0}">
+			<img src='../icon/open message.png' style = "width:25px; height:25px;">
+			</c:when>
+			<c:otherwise>
+			<img src='../icon/close message.png' style = "width:25px; height:25px;">
+			</c:otherwise>
+			</c:choose>
+			</td> 
 		</tr>
 		</c:forEach>
 		</tbody>
