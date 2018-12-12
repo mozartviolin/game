@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+<br><br>
 <div style="width:80%; text-align: center; margin: 0 auto;">
 <h2 style="font-style: oblique;"> 만족도 설문조사</h2>
 <br>
@@ -73,6 +73,6 @@
 		</section>
 				
 </div>
-
+<br><br>
 </body>
 </html>
