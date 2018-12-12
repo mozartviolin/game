@@ -60,6 +60,7 @@ public class QabbsDAO implements IQabbsDAO{
 		return mybatis.selectOne("qabbs.total", map);
 	}
 	
+	@Override
 	public boolean replyCreate(QabbsDTO qabbsDTO) {
 		boolean flag = false;
 		int cnt = mybatis.insert("qabbs.replyCreate", qabbsDTO);
@@ -68,15 +69,18 @@ public class QabbsDAO implements IQabbsDAO{
 		
 	}
 	
+	@Override
 	public void upAnsnum(Map map){
 		mybatis.update("qabbs.upAnsnum", map);
 		
 	}
 	
+	@Override
 	public QabbsDTO replyRead(int qano) {		
 		return mybatis.selectOne("qabbs.replyRead", qano);
 	}
 	
+	@Override
 	public boolean passCheck(Map map) {
 		boolean flag = false;
 		int cnt = mybatis.selectOne("qabbs.passCheck", map);
@@ -84,6 +88,7 @@ public class QabbsDAO implements IQabbsDAO{
 		return flag;	
 	}
 	
+	@Override
 	public boolean checkRefnum(int qano) {
 		boolean flag = false;		
 		int cnt = mybatis.selectOne("qabbs.checkRefnum", qano);
@@ -91,10 +96,17 @@ public class QabbsDAO implements IQabbsDAO{
 		return flag;	
 	}
 	
+	@Override
 	public void upViewcount(int qano) {
 		
 		mybatis.update("qabbs.upViewcount", qano);
 		
+	}
+	
+	@Override
+	public void mViewcount(int qano) {
+		
+		mybatis.update("qabbs.mViewcount", qano);
 	}
 
 }

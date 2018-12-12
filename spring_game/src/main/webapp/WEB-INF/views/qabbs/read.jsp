@@ -11,6 +11,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 function blist(){
 	var url = "list";
@@ -96,16 +99,17 @@ function rdelete(rnum){
 }
 
 </script>
+
 </head>
 <body>
 <BR>
 <BR>
 
-<h2>읽기</h2>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 게시글 읽기</h2>
+<br>
 
-<hr>
-
-<table>
+<table class="table" style="width:40%; margin: 0 auto;">
 	<tr>
 		<th>글번호</th>
 		<td>${qabbsDTO.qano}</td>
@@ -134,34 +138,52 @@ function rdelete(rnum){
 	
 </table>
 
-<button onclick="blist()">목록</button>
-<button onclick="mupdate()">수정하기</button>
-<button onclick="mdelete()">삭제하기</button>
+	<c:choose>
+    	<c:when test="${sessionScope.nicname == qabbsDTO.nicname }">
+	    	<input type="submit" name="button" value="목록" onclick="blist()">	
+		    <input type="button" name="button" value="수정" onclick="mupdate()">	
+		    <input type="button" name="button" value="삭제" onclick="mdelete()">	
+    	</c:when>
+    	<c:otherwise>
+		    <input type="submit" name="button" value="목록" onclick="blist()">	
+    	</c:otherwise>
+    </c:choose>	
+
 <!-- <button onclick="mreply()">답변하기</button> -->
   
-   <hr>
+</div>
+
+<hr>
+
+<div class="rlist" style="width:40%; text-align: right; margin: 0 auto;">
+<h4 style="font-style: oblique;"> 댓글</h4>  
+ 
    <!-- 댓글들 -->
  <c:forEach var="qreplyDTO" items="${qrlist }">
-  <div class="rlist">
-  	작성자  :  ${qreplyDTO.nicname }  &nbsp;&nbsp;&nbsp;   ||  &nbsp;  작성일  :  ${qreplyDTO.regdate}<br>
+  <div style="border:1px solid gold;">
+  	<p>작성자 : ${qreplyDTO.nicname }  &nbsp;|| &nbsp;  작성일 : ${qreplyDTO.regdate}</p>
+  	 
   	<p> ${qreplyDTO.content }</p>
+  	<c:if test="${sessionScope.nicname==qreplyDTO.nicname }">
+    </c:if>  
+    
     <c:if test="${sessionScope.nicname==qreplyDTO.nicname }">
-    <span style="float:right;">
-  	<a href="javascript:rupdate('${qreplyDTO.rnum}','${qreplyDTO.content}')">수정</a>
-  	 |
-  	<a href="javascript:rdelete('${qreplyDTO.rnum}')">삭제</a>  	
-  	</span> 
-    </c:if>  	
+	<span style="float:center;">
+		<a href="javascript:rupdate('${qreplyDTO.rnum}','${qreplyDTO.content}')">수정</a>
+		<a href="javascript:rdelete('${qreplyDTO.rnum}')">삭제</a>
+	</span>
+	</c:if>	
   </div>
  </c:forEach>
+</div>
  
  <!-- 댓글 페이징 -->
- <div text-align: center;">${paging }</div>
+ <div style="text-align: center;">${paging }</div>
 
  <hr>  
    
  <!-- 댓글 입력 -->
- <div class="rcreate">
+ <div class="rcreate" style="text-align: center; margin: 0 auto;">
  	<h5>댓글 쓰기</h5>
  	<form name="rform" action="./rcreate" method="post" onsubmit="return input(this)">
  	<input type="hidden" name="nicname" value="${sessionScope.nicname }">
@@ -177,6 +199,7 @@ function rdelete(rnum){
  	
  <!-- /div rcreate -->
  </div>
+ 
 
 <BR>
 <BR>

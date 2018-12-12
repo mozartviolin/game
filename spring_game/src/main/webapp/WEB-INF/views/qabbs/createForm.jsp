@@ -11,6 +11,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- ckeditor -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
  <script type="text/JavaScript">
@@ -22,10 +26,13 @@
 <body>
 <BR>
 <BR>
-<h2> Q&A게시판 등록</h2>
+
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> Q&A게시글 작성</h2>
+<br>
  
 <FORM name='frm' method='POST' action='./create' onsubmit="return incheck(this)">
-  <TABLE>
+  <TABLE  class="table" style="width:60%; margin: 0 auto;">
     <TR>
       <TH>닉네임</TH>
       <TD>     
@@ -64,10 +71,11 @@
    
   <DIV class='bottom'>
     <input type='submit' value='게시글 등록'>
-    <input type='button' value='취소' onclick="history.back()">
+    <input type="reset" value="취소">
+    <input type='button' value='뒤로가기' onclick="history.back()">
   </DIV>
 </FORM>
-
+</div>
 <BR>
 <BR>
 </body>

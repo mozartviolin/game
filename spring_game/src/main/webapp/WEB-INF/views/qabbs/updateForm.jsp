@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- ckeditor -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
  <script type="text/JavaScript">
@@ -19,8 +23,9 @@
 <body>
 <BR>
 <BR>
-
-<h2>Q&A게시판 수정하기</h2>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> Q&A게시글 수정</h2>
+<br>
  
 <FORM name='frm' method='POST' action='./update' onsubmit="return incheck(this)">
 <input type="hidden" name="qano" value="${qabbsDTO.qano}"> 
@@ -29,7 +34,7 @@
 <input type="hidden" name="nowPage" value="${param.nowPage}"> 
 <hr>
 
-<table>
+<table class="table" style="width:60%; margin: 0 auto;">
 	<tr>
 		<th>닉네임</th>
 		<td><input type="text" name="nicname" size="30"></td>
@@ -61,6 +66,7 @@
   </DIV>
 </FORM>
 
+</div>
 <BR>
 <BR>
 </body>

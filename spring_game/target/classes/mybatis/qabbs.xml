@@ -86,6 +86,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where qano=#{qano}
 	</update>
 	
+	<update id="mViewcount" parameterType="int">
+		update qabbs         
+		set viewcount = viewcount - 1
+		where qano=#{qano}
+	</update>
+	
 	<select id="passCheck" parameterType="Map" resultType="int">
 		select count(qano) as cnt
 		from qabbs                  

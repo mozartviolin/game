@@ -5,12 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- ckeditor -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
+ <script type="text/JavaScript">
+   window.onload=function(){
+     CKEDITOR.replace('content');
+  };
+ </script>
+ 
+
+
 </head>
 <body>
 <BR>
 <BR>
-
-<h2>Q&A게시판 답변등록</h2>
+ <div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> Q&A게시판 답변</h2>
+<br>
  
 <FORM name='frm' method='POST' action='./reply' onsubmit="return incheck(this)">
 <!-- 답변있는 부모글의 삭제를 못하게 하기 위해서 -->
@@ -61,5 +77,9 @@
     <input type='button' value='취소' onclick="history.back()">
   </DIV>
 </FORM>
+
+</div>
+<br><br>
+
 </body>
 </html>

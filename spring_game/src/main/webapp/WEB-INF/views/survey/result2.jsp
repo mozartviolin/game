@@ -10,12 +10,20 @@
 <script src="https://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
 <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+<br>
+<br>
 
-<h2>게임을 다시 플레이할 의향이 있는지에 대한 설문조사 결과창</h2>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<h2 style="font-style: oblique;"> 게임을 다시 플레이할 의향이 있는지에 대한 설문조사 결과창</h2>
+<br>
 
-<div id="canvas-holder" style="width:40%">
+<div id="canvas-holder" style="margin: 0 auto; text-align:center; width:60%">
 		<canvas id="chart-area"></canvas>
 	</div>
 <!-- 	<button id="removeDataset">Remove Dataset</button> -->
@@ -72,5 +80,7 @@
 </div>
 <hr>
 
+</div>
+<br><br>
 </body>
 </html>

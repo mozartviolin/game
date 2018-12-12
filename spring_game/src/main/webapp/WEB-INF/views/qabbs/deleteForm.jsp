@@ -5,13 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+function blist(){
+	var url = "list";
+		url = url + "?col=${param.col}";
+		url = url + "&word=${param.word}";
+		url = url + "&nowPage=${param.nowPage}";
+		
+		location.href=url;
+}
+</script>
+
 </head>
 <body>
-<div>
+
 <BR>
 <BR>
 
-<h2> Q&A게시판 삭제 </h2>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<BR><BR><BR><BR>
+<h2 style="font-style: oblique;"> Q&A게시글 삭제</h2>
 	 
 	<FORM name='frm' method='POST' action='./delete' onsubmit="return incheck(this)">
 		<input type="hidden" name="qano" value="${param.qano}"> 
@@ -23,26 +37,24 @@
 
 <hr>
 
-<table>
+<table class="table" style="width:30%; margin: 0 auto;">
 <tr>
 <td>
 <p>삭제하려면 비밀번호가 필요합니다. <br>
 비밀번호를 입력하세요 </p>
-<input type="password" name="passwd" size="40">
+<input type="password" name="passwd" size="30">
 </td>
 </tr>
 </table>
 		 
-		  <DIV class='bottom'>
 		  	<button type="submit">삭제하기</button>
 		    <input type='button' value='목록으로 돌아가기' onclick="blist()">
-		  </DIV>
+		 
 		 </FORM>
 
- -->
-
  </div>
-
+<BR>
+<BR>
 <BR>
 <BR>
 

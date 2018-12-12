@@ -11,6 +11,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style type="text/css">
+
+th{
+text-align: center; margin: 0 auto;
+}
+
+</style>
 <script type="text/javascript">
 function read(qano){
 	var url = "read";
@@ -43,13 +57,16 @@ function salist(){
 <BR>
 <BR>
 
-<h2> Q&A게시판 </h2>
+<div style="width:80%; text-align: center; margin: 0 auto;">
+
+<h2 style="font-style: oblique;"> Q&A게시판</h2>
 
 <h4>분류</h4>
 <div>
 <a href="javascript:allist()"><button>전체</button></a>
 <a href="javascript:qalist()"><button>문의</button></a>
 <a href="javascript:salist()"><button>신고</button></a>
+
 </div>
 
 <hr>
@@ -75,13 +92,13 @@ function salist(){
 	</select>
 	<!-- 입력값 -->
 	<input type="text" name="word" value="${word}">
-	<input type="submit" value="검색">					
+	<input type="submit" value="검색">	
+	<input type="button" onclick="location.href='create'" value="글쓰기" />		
 	</form>
 	</div>
 <hr>
-
 		
-<table>
+<table class="table" style="width:60%; margin: 0 auto;">
 	<tr>
 		<th>글번호</th>
 		<th>카테고리</th>
@@ -110,33 +127,33 @@ function salist(){
 				<td class="left">
 				<c:choose>
 				<c:when test ='${empty sessionScope.nicname }'>
-				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<img src='${pageContext.request.contextPath }/images/locked.png'>
 				${qabbsDTO.subject }				
-				<c:if test="${rcount>0 }">
-            	<span style="color:black;">(${rcount})</span>
+				<c:if test="${qrcount>0 }">
+            	<span style="color:black;">(${qrcount})</span>
             	</c:if>
 				</c:when>
 				<c:when test ='${sessionScope.grade == 1}'>
-				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
-				<c:if test="${rcount>0 }">
-            	<span style="color:red;">(${rcount})</span>
+				<c:if test="${qrcount>0 }">
+            	<span style="color:red;">(${qrcount})</span>
           		</c:if>				
 				</c:when>
 				<c:when test ='${sessionScope.nicname == qabbsDTO.nicname}'>
-				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
-				<c:if test="${rcount>0 }">
-            	<span style="color:red;">(${rcount})</span>
+				<c:if test="${qrcount>0 }">
+            	<span style="color:red;">(${qrcount})</span>
           		</c:if>		
 				</c:when>
 				<c:otherwise>
-				<c:set var="rcount" value="${util:rcount(qabbsDTO.qano, qreplyDAO) }"/>	
+				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<img src='${pageContext.request.contextPath }/images/locked.png'>
 				${qabbsDTO.subject }
-				<c:if test="${rcount>0 }">
-            	<span style="color:black;">(${rcount})</span>
+				<c:if test="${qrcount>0 }">
+            	<span style="color:black;">(${qrcount})</span>
           		</c:if>
           		</c:otherwise>
           		</c:choose>
@@ -158,7 +175,9 @@ function salist(){
 
 <p style="text-align:center;">${paging }</p>
 
-<button onclick="location.href='create'"> 글쓰기 </button>
+
+
+</div>
 
 <BR>
 <BR>

@@ -59,19 +59,21 @@ public class QReplyDAO implements IQReplyDAO{
 		return 0;
 	}
 	
+	@Override
 	public int qrtotal(int qano) {
 		return mybatis.selectOne("qreply.total", qano);
 	}
 	
+	@Override
 	public boolean bdelete(int qano) {
 		boolean flag = false;
 		int cnt = mybatis.delete("qreply.bdelete", qano);
 		if(cnt>0)flag=true;
 		return flag;
 	}
-	
-	public int rcount(int qano){
-	    return mybatis.selectOne("qreply.rcount", qano);
+		
+	public int qrcount(int qano){
+	    return mybatis.selectOne("qreply.qrcount", qano);
 	}
 	
 }
