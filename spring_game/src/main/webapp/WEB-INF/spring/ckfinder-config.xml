@@ -17,8 +17,8 @@
 	Configure the location of uploaded files. See the following article for more details:
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
-	<baseDir>D:\javasecurity\spring\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring_webtest\ckstorage</baseDir>
-	<baseURL>/webtest/ckstorage/</baseURL>
+	<baseDir>D:/javasecurity\spring\workspace_git\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring_game\ckstorage</baseDir>
+	<baseURL>/game/ckstorage/</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
 	<!--

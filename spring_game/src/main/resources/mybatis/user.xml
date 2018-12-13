@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userlist">
+
+<insert id="create" parameterType="UserDTO">
+	insert into userlist(u_no, nicname, udate)     
+	values((SELECT NVL(MAX(u_no), 0)+1 FROM userlist), #{nicname}, sysdate)     
+	
+</insert>
+
+
+<select id="list" resultType="UserDTO">                                           
+		select nicname, udate from userlist                                                                              
+        order by udate desc                                            
+                                                                                                                       
+
+</select>
+
+
+<delete id="delete" parameterType="String" >
+	delete from userlist where nicname=#{nicname}
+</delete>
+
+
+
+
+
+
+
+
+</mapper>
