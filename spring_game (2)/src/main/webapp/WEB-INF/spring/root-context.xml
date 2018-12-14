@@ -93,7 +93,9 @@
  				<value>/WEB-INF/spring/bbs.xml</value>
  				<value>/WEB-INF/spring/qabbs.xml</value>
 				<value>/WEB-INF/spring/survey.xml</value>
- 				
+ 				<value>/WEB-INF/spring/notice.xml</value>
+				<value>/WEB-INF/spring/nreply.xml</value>
+				<value>/WEB-INF/spring/message.xml</value>
 			</list>
 		</property>
 	</bean>

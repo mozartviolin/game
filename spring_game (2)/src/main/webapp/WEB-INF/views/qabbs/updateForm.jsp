@@ -39,6 +39,7 @@
 	<tr>
 		<th>닉네임</th>
 		<td>
+		<input type="hidden" name="nicname" value="${sessionScope.nicname }"/>
 		${sessionScope.nicname }
 		</td>
 	</tr>

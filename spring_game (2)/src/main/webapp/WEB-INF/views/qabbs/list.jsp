@@ -133,20 +133,29 @@ function salist(){
 				<c:if test="${qrcount>0 }">
             	<span style="color:black;">(${qrcount})</span>
             	</c:if>
+            	<c:if test="${util:newImg(qabbsDTO.qadate) }">
+				<img src='${root }/images/new.png' style='width:20px; height:20px'>
+				</c:if>
 				</c:when>
 				<c:when test ='${sessionScope.grade == 1}'>
 				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
 				<c:if test="${qrcount>0 }">
             	<span style="color:red;">(${qrcount})</span>
-          		</c:if>				
+          		</c:if>
+          		<c:if test="${util:newImg(qabbsDTO.qadate) }">
+				<img src='${root }/images/new.png' style='width:20px; height:20px'>
+				</c:if>				
 				</c:when>
 				<c:when test ='${sessionScope.nicname == qabbsDTO.nicname}'>
 				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
 				<a href="javascript:read('${qabbsDTO.qano }')">${qabbsDTO.subject }</a>
 				<c:if test="${qrcount>0 }">
             	<span style="color:red;">(${qrcount})</span>
-          		</c:if>		
+          		</c:if>
+          		<c:if test="${util:newImg(qabbsDTO.qadate) }">
+				<img src='${root }/images/new.png' style='width:20px; height:20px'>
+				</c:if>		
 				</c:when>
 				<c:otherwise>
 				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	
@@ -155,6 +164,9 @@ function salist(){
 				<c:if test="${qrcount>0 }">
             	<span style="color:black;">(${qrcount})</span>
           		</c:if>
+          		<c:if test="${util:newImg(qabbsDTO.qadate) }">
+				<img src='${root }/images/new.png' style='width:20px; height:20px'>
+				</c:if>
           		</c:otherwise>
           		</c:choose>
      			</td>

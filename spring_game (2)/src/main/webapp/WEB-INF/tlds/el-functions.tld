@@ -54,5 +54,6 @@
             int qrcount( int,spring.model.qabbs.QReplyDAO ) 
         </function-signature> 
     </function>
+
     
 </taglib>    
