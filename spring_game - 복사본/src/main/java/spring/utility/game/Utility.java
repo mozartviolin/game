@@ -1,4 +1,4 @@
-package spring.utility.game;
+﻿package spring.utility.game;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,14 +12,22 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import spring.model.breply.BreplyDAO;
 import spring.model.qabbs.QReplyDAO;
+
+
 
 public class Utility {
 	
-	public static int rcount(int qano, QReplyDAO qreplyDAO) {
-		return qreplyDAO.rcount(qano);
+	public static int rcount(int bbsno, BreplyDAO breplyDAO) {
+		return breplyDAO.rcount(bbsno);
 	}
 	
+	public static int qrcount(int qano, QReplyDAO qreplyDAO) {
+		return qreplyDAO.qrcount(qano);
+	}
+
+
 	public static String saveFileSpring(
 			MultipartFile multipartFile, String basePath) {//basePath는 storage
 		
@@ -113,7 +121,7 @@ public class Utility {
 
 		return flag;
 	}
-	
+
 	/**
 	 * SPAN태그를 이용한 박스 모델의 지원, 1 페이지부터 시작 현재 페이지: 11 / 22 [이전] 11 12 13 14 15 16 17
 	 * 18 19 20 [다음]
@@ -433,7 +441,7 @@ public class Utility {
 		
 		return str.toString();
 	}
-	
+
 	public static String rpaging(int total, int nowPage, int recordPerPage,
 			int nPage, String url) {
 		int pagePerBlock = 10; // 블럭당 페이지 수

@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -36,15 +37,8 @@
     <TR>
       <TH>닉네임</TH>
       <TD>     
-		<c:choose>
-		<c:when test="${not empty sessionScope.nicname }">
-		<input type="hidden" name="nicname" size="20" value="${sessionScope.nicname }">
 		${sessionScope.nicname }
-		</c:when>
-		<c:otherwise>
-		  <input type="text" name="nicname" size="20" placeholder="닉네임을 입력하세요">
-		</c:otherwise>
-	  </c:choose>
+	  </TD>
 	</TR>
     <TR>
       <TH>카테고리</TH>

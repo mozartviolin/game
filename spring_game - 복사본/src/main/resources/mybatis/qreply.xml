@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="qreply">
 
-	<select id="rcount" parameterType="int" resultType="int">
+	<select id="qrcount" parameterType="int" resultType="int">
      	SELECT count(*) FROM qreply
     	 	WHERE qano = #{qano}
     </select>

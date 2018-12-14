@@ -124,7 +124,7 @@ function salist(){
 			<tr>
 				<td>${qabbsDTO.qano }</td>
 				<td>[${qabbsDTO.category }]</td>
-				<td class="left">
+				<td style="text-align:left;" class="left">
 				<c:choose>
 				<c:when test ='${empty sessionScope.nicname }'>
 				<c:set var="qrcount" value="${util:qrcount(qabbsDTO.qano, qreplyDAO) }"/>	

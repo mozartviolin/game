@@ -1,23 +1,29 @@
-<%@ page contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Error</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Insert title here</title>
 </head>
 <body>
-<div class="container">
 
+<div style="width:80%; text-align: center; margin: 0 auto;">
+<BR><BR><BR><BR>
+<h2 style="font-style: oblique;">아이디/비밀번호 오류</h2>
+<br><br>
+	아이디 또는 비밀번호 오류입니다.<br>
+	입력한 정보를 다시 확인해주세요.<Br>
+	<BR><BR>
+	<button onclick="history.back()">다시시도</button>
 
-<p>잘못된 패스워드를 입력하셨습니다.<br>
-
-<p>다시 시도하시거나 회원 가입을 하시기 바랍니다.</p>
-
-<hr>
-<button onclick="history.back()">다시 시도</button>
-<button onclick="location.href='${pageContext.request.contextPath}/member/agree'">회원가입</button>
 </div>
-
+<BR><BR><BR><BR>
 </body>
 </html>

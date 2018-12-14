@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ public class QabbsController {
 	@Autowired
 	private QReplyDAO qreplyDAO;
 	
+	
 	@RequestMapping(value="/qabbs/create", method=RequestMethod.POST)
 	public String create(QabbsDTO qabbsDTO, Model model, HttpServletRequest request) throws Exception{
 		boolean flag = false;		
@@ -44,9 +46,15 @@ public class QabbsController {
 		}
 	
 	@RequestMapping(value="/qabbs/create", method=RequestMethod.GET)
-	public String create() {
+	public String create(String id, HttpSession session, Model model,
+			HttpServletRequest request) {
 		
-		return "/qabbs/create";
+		if(session.getAttribute("id")==null) {
+			return "/member/login";			
+		}else {
+			return "/qabbs/create";
+		}
+		
 	}
 	
 	@RequestMapping(value="/qabbs/read")
@@ -345,17 +353,7 @@ public class QabbsController {
 			return "/error/error";
 		}			
 	}
-	@RequestMapping(value="/qabbs/viewCookies")
-	public String viewCookies() {
 		
-		return "/qabbs/viewCookies";
-	}
-	@RequestMapping(value="/qabbs/viewqabbs")
-	public String viewqabbs() {
-		
-		return "/qabbs/viewqabbs";
-	}
-	
 	
 	
 }

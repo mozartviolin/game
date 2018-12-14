@@ -44,7 +44,7 @@
         <put-attribute name="title" value="qabbs 쿠키확인" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/qabbs/viewqabbs.jsp" /> 
     </definition>      
-   
+  
     
    
 </tiles-definitions>

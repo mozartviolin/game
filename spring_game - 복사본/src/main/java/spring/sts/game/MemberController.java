@@ -1,5 +1,9 @@
 package spring.sts.game;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +31,12 @@ public class MemberController {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	
+	@RequestMapping("/member/callback")
+	public String callback() {
+		
+		return "/member/callback";
+	}
 	
 	@RequestMapping(value="/member/delete", method=RequestMethod.GET)
 	public String delete(String id, HttpSession session, Model model) {
@@ -123,9 +133,9 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/member/read")
+	
+	@RequestMapping(value="/member/read", method=RequestMethod.GET)
 	public String read(String id, Model model, HttpServletRequest request) {
-		
 		
 		if(id == null) {
 			id = (String)request.getSession().getAttribute("id");
@@ -139,6 +149,13 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("memberDTO", memberDTO);
+		return "/member/read";
+	}
+	
+	@RequestMapping("member/read")
+	public String read(MemberDTO memberDTO, Model model) {
+		
 		
 		float per = 0;
 		
@@ -151,6 +168,7 @@ public class MemberController {
 		
 		return "/member/read";
 	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value="/member/pwfind", method=RequestMethod.GET, produces="text/plain;charset=utf-8")
@@ -308,9 +326,21 @@ public class MemberController {
 		return "/member/login";
 	}
 	
-	@RequestMapping(value="/member/login", method=RequestMethod.POST)
+	@RequestMapping("/member/loginc")
 	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, HttpServletResponse response,
 			Model model, HttpServletRequest request) {
+		
+		String uniqId = request.getParameter("uniqId");
+		String nickName = request.getParameter("nickName"); 
+		
+		if(uniqId != null && nickName != null) {
+			
+			session.setAttribute("id", uniqId);
+			session.setAttribute("grade", "0");
+			session.setAttribute("nicname", nickName);
+			
+			return "redirect:/";
+		}
 		
 		String id = (String)map.get("id");
 		boolean flag = memberDAO.loginCheck(map);

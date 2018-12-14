@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,7 @@ public class QabbsController {
 	@Autowired
 	private QReplyDAO qreplyDAO;
 	
+	
 	@RequestMapping(value="/qabbs/create", method=RequestMethod.POST)
 	public String create(QabbsDTO qabbsDTO, Model model, HttpServletRequest request) throws Exception{
 		boolean flag = false;		
@@ -44,40 +46,47 @@ public class QabbsController {
 		}
 	
 	@RequestMapping(value="/qabbs/create", method=RequestMethod.GET)
-	public String create() {
+	public String create(String id, HttpSession session, Model model,
+			HttpServletRequest request) {
 		
-		return "/qabbs/create";
+		if(session.getAttribute("id")==null) {
+			return "/member/login";			
+		}else {
+			return "/qabbs/create";
+		}
+		
 	}
 	
 	@RequestMapping(value="/qabbs/read")
 	public String read(int qano, Model model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 					
-		QabbsDTO qabbsDTO = (QabbsDTO) qabbsDAO.read(qano);    
-        
+		QabbsDTO qabbsDTO = (QabbsDTO) qabbsDAO.read(qano);          
+		qabbsDAO.upViewcount(qano);
+		
         //조회수 cookie 처리 1일
         int oldviewcount = qabbsDTO.getViewcount();        
         int c_viewcount_val = 0; 
-
+               
         Cookie[] cookies = request.getCookies(); 
         Cookie cookie=null;    
         
         cookie = new Cookie("c_viewcount_val", String.valueOf(oldviewcount)); // 조회수 값 저장 쿠키  
         cookie.setMaxAge(60*60*24);          // 1일 
-        response.addCookie(cookie);          // 쿠키 기록
-         
+        response.addCookie(cookie);          // 쿠키 기록  
+        
         if (cookies != null){ 
          for (int i = 0; i < cookies.length; i++) { 
            cookie = cookies[i];            
          
          if(cookie.getName().equals("c_viewcount_val")){ 
-             c_viewcount_val = Integer.parseInt(cookie.getValue()); 
+             c_viewcount_val = Integer.parseInt(cookie.getValue()); // 쿠키 저장
             } 
           } 
-        }
+        }    
     
-        if(c_viewcount_val == 0) {        
-            qabbsDAO.upViewcount(qano);
+        if(c_viewcount_val != 0) {        
+            qabbsDAO.mViewcount(qano);
             }else{            
             }
                 
@@ -344,17 +353,7 @@ public class QabbsController {
 			return "/error/error";
 		}			
 	}
-	@RequestMapping(value="/qabbs/viewCookies")
-	public String viewCookies() {
 		
-		return "/qabbs/viewCookies";
-	}
-	@RequestMapping(value="/qabbs/viewqabbs")
-	public String viewqabbs() {
-		
-		return "/qabbs/viewqabbs";
-	}
-	
 	
 	
 }
