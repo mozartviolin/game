@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="nreply">
+ 
+<insert id="create" parameterType="NreplyDTO">
+<selectKey keyProperty="nreplyno" resultType="int" order="BEFORE">
+select nvl(max(nreplyno),0)+1 from nreply 
+</selectKey>
+insert into nreply(nreplyno, content, nreplydate, nicname, n_no)
+values(#{nreplyno}, #{content}, sysdate, #{nicname}, #{n_no}) 
+</insert>
+ 
+<select id="read" parameterType="int" resultType="NreplyDTO">
+select * from nreply
+where nreplyno = #{nreplyno}
+</select>
+ 
+<update id="update" parameterType="NreplyDTO">
+update nreply
+set content = #{content}
+where nreplyno = #{nreplyno}
+ 
+</update>
+ 
+<delete id="delete" parameterType="int">
+delete from nreply
+where nreplyno = #{nreplyno}
+</delete>
+
+<delete id="ndelete" parameterType="int">
+delete from nreply
+where n_no = #{n_no}
+</delete>
+
+<select id="list" parameterType="Map" resultType="NreplyDTO">
+select nreplyno, content, to_char(nreplydate,'yyyy-mm-dd') nreplydate, nicname, n_no, r
+FROM(
+select nreplyno, content, nreplydate, nicname, n_no, rown_no r
+FROM(
+select nreplyno, content, nreplydate, nicname, n_no
+from nreply
+where n_no = #{n_no}
+order by nreplyno DESC
+   )
+<![CDATA[
+)WHERE r >= #{sno} and r <= #{eno}
+]]>
+</select>
+ 
+<select id="total" resultType="int" parameterType="int">
+select count(*) from nreply
+where n_no=#{n_no}
+</select>
+ 
+</mapper>

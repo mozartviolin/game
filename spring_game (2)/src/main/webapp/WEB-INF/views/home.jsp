@@ -25,7 +25,7 @@
 
 <c:if test="${not empty sessionScope.id && sessionScope.grade == '0' }">
 <a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">나의 정보</a> &nbsp;&nbsp;&nbsp;
-<a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">쪽지함</a>
+<a href="${pageContext.request.contextPath }/message/list" class="btn btn-link">쪽지함</a>
 <br>
 <br>
 	<c:choose>

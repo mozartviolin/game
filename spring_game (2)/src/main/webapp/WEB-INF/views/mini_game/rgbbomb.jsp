@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<BR><BR>
+
+<div style="width:80%; text-align: center; margin: 0 auto;">
 
 <div>
 	 <p>RED, GREEN, BLUE에서 자르고 싶은 선을 세 개 고르시오. </p>
@@ -84,6 +87,10 @@
  </tbody>
 
 </table>
+
+</div>
+<br>
+<br>
 
 </body>
 

@@ -60,6 +60,7 @@ function salist(){
 <div style="width:80%; text-align: center; margin: 0 auto;">
 
 <h2 style="font-style: oblique;"> Q&A게시판</h2>
+<h5>문의하거나 신고할 수 있는 게시판입니다.</h5>
 
 <h4>분류</h4>
 <div>
@@ -73,29 +74,35 @@ function salist(){
 전체글수 : ${totalRecord }
 <br>
 
+
  <div class="search">
 	<form method="post" action="./list">
-	<select name="col">
-	<option value="category"
-	<c:if test="${col=='category'}">selected</c:if>				
-	>카테고리</option>
-	<option value="nicname"
-	<c:if test="${col=='nicname'}">selected</c:if>				
-	>닉네임</option>
-	<option value="subject"
-	<c:if test="${col=='subject'}">selected</c:if>
-	>제목</option>
-	<option value="content"
-	<c:if test="${col=='content'}">selected</c:if>
-	>내용</option>
-	<option value="total">전체출력</option>
-	</select>
-	<!-- 입력값 -->
-	<input type="text" name="word" value="${word}">
-	<input type="submit" value="검색">	
-	<input type="button" onclick="location.href='create'" value="글쓰기" />		
+		<select name="col">
+		<option value="category"
+		<c:if test="${col=='category'}">selected</c:if>				
+		>카테고리</option>
+		<option value="nicname"
+		<c:if test="${col=='nicname'}">selected</c:if>				
+		>닉네임</option>
+		<option value="nicname"
+		<c:if test="${col=='nicname'}">selected</c:if>				
+		>닉네임2</option>
+		<option value="subject"
+		<c:if test="${col=='subject'}">selected</c:if>
+		>제목</option>
+		<option value="content"
+		<c:if test="${col=='content'}">selected</c:if>
+		>내용</option>
+		<option value="total">전체출력</option>
+		</select>
+		<!-- 입력값 -->
+		<input type="text" name="word" value="${word}">
+		<input type="submit" value="검색">	
+		<button type="button" onclick="location.href='create'" 
+		style="margin:15px auto;"> 글쓰기 </button>
 	</form>
-	</div>
+</div>
+
 <hr>
 		
 <table class="table" style="width:60%; margin: 0 auto;">
@@ -186,8 +193,6 @@ function salist(){
 </table>
 
 <p style="text-align:center;">${paging }</p>
-
-
 
 </div>
 

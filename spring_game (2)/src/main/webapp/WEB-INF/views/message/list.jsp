@@ -20,6 +20,11 @@
 </script>
 </head>
 <body>
+
+<BR><BR>
+
+<div style="width:80%; text-align: center; margin: 0 auto;">
+
 <div style="width:80%; text-align:center" >
 <h1>받은쪽지함</h1>
  <form method="post" action="./list.do">
@@ -72,6 +77,11 @@
 	</table>
 	${paging}
 	</div>
+	
+</div>
+<br>
+<br>
+
 </body>
 <br>
 </html>

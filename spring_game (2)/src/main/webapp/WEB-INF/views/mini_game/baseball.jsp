@@ -162,6 +162,11 @@ function playOneRound ( tagList ) {
 </script>
 </head>
 <body>
+
+<BR><BR>
+
+<div style="width:80%; text-align: center; margin: 0 auto;">
+
 	<div style="float: left;">
 		<p>0 ~ 9 중에서 숫자를 입력한 후, "결과 보기" 버튼을 누르세요.</p>
 
@@ -334,5 +339,10 @@ function deleteText () {
 } 
 
 </script>
+
+</div>
+<br>
+<br>
+
 </body>
 </html>

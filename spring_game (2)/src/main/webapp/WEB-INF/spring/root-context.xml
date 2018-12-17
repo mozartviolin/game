@@ -96,6 +96,7 @@
  				<value>/WEB-INF/spring/notice.xml</value>
 				<value>/WEB-INF/spring/nreply.xml</value>
 				<value>/WEB-INF/spring/message.xml</value>
+				<value>/WEB-INF/spring/mini_game.xml</value>
 			</list>
 		</property>
 	</bean>

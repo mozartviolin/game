@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="message">
+
+<select id="count" parameterType="int" resultType="int">
+     SELECT count(viewcnt) FROM message
+     WHERE viewcnt = 0 
+    </select>
+
+<insert id = "create" parameterType = "MessageDTO">
+insert into message(mno,meto,nicname,subject,content,mdate)
+values((select nvl(max(mno),0)+1 as mno from message),#{meto},#{nicname},#{subject},#{content},sysdate)
+</insert>
+
+<select id = "read" resultType="MessageDTO" parameterType="int">
+select mno, nicname, meto, subject,content,mdate
+from message
+where mno=#{mno}
+</select>
+
+<delete id = "delete" parameterType = "int">
+delete from message
+where mno=#{mno}
+</delete>
+
+<update id="upviewcnt" parameterType="int">
+		update message
+		set viewcnt = viewcnt +1
+		where mno = #{mno}
+	</update>
+
+<select id="fromlist" parameterType="Map" resultType="MessageDTO">
+		
+		select mno, nicname,meto,subject,mdate,viewcnt,r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt,rownum as r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt 
+		from message
+		<where>
+			<choose>
+				<when test="col=='nicname'">
+					nicname like '%'||#{word}||'%'
+				</when>
+				<when test="col=='subject'">
+					subject like '%'||#{word}||'%'
+				</when>
+			</choose>
+			AND nicname = #{nicname}
+		</where>    
+		order by mno desc
+		)
+		 
+<![CDATA[                                                    
+)where r>=#{sno} and r<=#{eno}                                      
+]]>
+	</select>
+	
+	<select id="list" parameterType="Map" resultType="MessageDTO">
+		
+		select mno, nicname,meto,subject,mdate,viewcnt,r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt,rownum as r
+		from(
+		select mno, nicname,meto,subject, mdate,viewcnt 
+		from message
+		<where>
+			<choose>
+				<when test="col=='nicname'">
+					nicname like '%'||#{word}||'%'
+				</when>
+				<when test="col=='subject'">
+					subject like '%'||#{word}||'%'
+				</when>
+			</choose>
+			AND meto = #{nicname}
+		</where>      
+		order by mno desc
+		)
+		 
+<![CDATA[                                                    
+)where r>=#{sno} and r<=#{eno}                                      
+]]>
+	</select>
+
+</mapper>
