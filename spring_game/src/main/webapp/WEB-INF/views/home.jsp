@@ -22,9 +22,20 @@
 
 <h3 style="font-style: oblique; text-align: center;"> ${str }</h3>
 
+
 <c:if test="${not empty sessionScope.id && sessionScope.grade == '0' }">
 <a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">나의 정보</a> &nbsp;&nbsp;&nbsp;
-<a href="${pageContext.request.contextPath }/member/read" class="btn btn-link">쪽지함</a>
+<a href="${pageContext.request.contextPath }/message/list" class="btn btn-link">쪽지함</a>
+<br>
+<br>
+	<c:choose>
+	<c:when test="${not empty list }">
+	<c:forEach  var="dto" items="${list }" varStatus="status">
+	   접속자 _ ${dto.nicname } &nbsp;&nbsp;
+	</c:forEach>
+	</c:when>
+	</c:choose>
+
 </c:if>
 </div>
 

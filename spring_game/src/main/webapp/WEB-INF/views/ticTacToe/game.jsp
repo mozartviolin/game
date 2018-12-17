@@ -14,6 +14,11 @@
               href="<c:url value="/resource/stylesheet/ticTacToe.css" />" />
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <style type="text/css">
+        div{
+        text-align:center;
+        }
+        </style>
     </head>
     <body>
         <h2>Tic Tac Toe</h2>
@@ -337,8 +342,7 @@
 
                 var server;
                 try {
-                    server = new WebSocket('ws://' + window.location.host +
-                            '<c:url value="/ticTacToe/${gameId}/${username}">
+                    server = new WebSocket('ws://' + window.location.host +'<c:url value="/ticTacToe/${gameId}/${username}">
                                 <c:param name="action" value="${action}" />
                             </c:url>');
                 } catch(error) {

@@ -1,9 +1,6 @@
 package spring.sts.game;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.member.MemberDAO;
 import spring.model.member.MemberDTO;
+import spring.model.user.UserDAO;
 import spring.utility.game.Utility;
 
 @Controller
@@ -30,6 +28,10 @@ public class MemberController {
 	
 	@Autowired
 	private MemberDAO memberDAO;
+	
+	@Autowired
+	private UserDAO udao;
+
 	
 	
 	@RequestMapping("/member/callback")
@@ -294,6 +296,8 @@ public class MemberController {
 	
 	@RequestMapping("/member/logout")
 	public String logout(HttpSession session) {
+		String sessionNicname=(String)session.getAttribute("nicname");
+		udao.delete(sessionNicname);
 		session.invalidate();
 		
 		return "redirect:/";
@@ -332,28 +336,54 @@ public class MemberController {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
+		//System.out.println("1번 : "+nickName);
+		
 		
 		if(uniqId != null && nickName != null) {
 			
 			session.setAttribute("id", uniqId);
 			session.setAttribute("grade", "0");
 			session.setAttribute("nicname", nickName);
+			String sessionNicname=(String)session.getAttribute("nicname");
+			udao.create(sessionNicname);
+			
+			
+			
 			
 			return "redirect:/";
 		}
+		
+		//System.out.println("2번 : "+session.getAttribute("nicname"));
 		
 		String id = (String)map.get("id");
 		boolean flag = memberDAO.loginCheck(map);
 		
 		String url = "/error/passwdError";
-		
-		if(flag) {
+				
+		if(flag ) {
 			Map gmap = memberDAO.getGradeAnicname(id);
 			
+			//System.out.println("3번 : "+nickName);
 			session.setAttribute("id", id);
 			session.setAttribute("grade", gmap.get("GRADE"));
 			session.setAttribute("nicname", gmap.get("NICNAME"));
 			
+			
+			String sessionNicname=(String)session.getAttribute("nicname");
+			udao.create(sessionNicname);
+			
+//			if(nickName != null) {
+//				System.out.println("sksksk");
+//				System.out.println(nickName);
+//				udao.create(nickName);
+//				
+//			}else if(session.getAttribute("nicname") != null) {
+//				System.out.println(session.getAttribute("nicname"));
+//				String sessionNicname=(String)session.getAttribute("nicname");
+//				udao.create(sessionNicname);
+//			}
+//			
+//			
 			Cookie cookie = null;
 			
 			if(c_id != null) {

@@ -64,7 +64,7 @@ public class TicTacToeServlet extends HttpServlet
                       HttpServletResponse response)
             throws ServletException, IOException
     {
-        request.getRequestDispatcher("/WEB-INF/jsp/view/ticTacToe/"+view+".jsp")
+        request.getRequestDispatcher("/WEB-INF/views/ticTacToe/"+view+".jsp")
                .forward(request, response);
     }
 

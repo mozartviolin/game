@@ -25,7 +25,6 @@
 		// Automatic Slideshow - change image every 4 seconds
 		var myIndex = 0;
 		carousel();
-
 		function carousel() {
 			var i;
 			var x = document.getElementsByClassName("mySlides");
@@ -39,7 +38,6 @@
 			x[myIndex - 1].style.display = "block";
 			setTimeout(carousel, 4000);
 		}
-
 		// Used to toggle the menu on small screens when clicking on the menu button
 		function myFunction() {
 			var x = document.getElementById("navDemo");
@@ -49,7 +47,6 @@
 				x.className = x.className.replace(" w3-show", "");
 			}
 		}
-
 		
 	</script>
 

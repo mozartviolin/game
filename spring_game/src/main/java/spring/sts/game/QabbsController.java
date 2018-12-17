@@ -40,7 +40,7 @@ public class QabbsController {
 		if(flag) {
 			return "redirect:/qabbs/list";
 		}else {
-			return "error/error";
+			return "/error/error";
 		}
 		
 		}
@@ -147,7 +147,7 @@ public class QabbsController {
 					str = "redirect:/qabbs/list";
 					}
 				else {
-					str = "error/Error";
+					str = "/error/error";
 				}
 			} else {
 				str = "error/passwdError";
@@ -276,7 +276,7 @@ public class QabbsController {
 			
 				return "redirect:/qabbs/list";
 			}else {
-				return "error/error";
+				return "/error/error";
 			}			
 		}catch(Exception e) {
 			

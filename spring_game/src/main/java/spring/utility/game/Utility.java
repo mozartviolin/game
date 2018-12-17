@@ -1,4 +1,4 @@
-﻿package spring.utility.game;
+package spring.utility.game;
 
 import java.io.File;
 import java.io.FileOutputStream;

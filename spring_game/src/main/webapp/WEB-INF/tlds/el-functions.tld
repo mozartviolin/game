@@ -6,12 +6,12 @@
                         web-jsptaglibrary_2_0.xsd" 
     version="2.0">
     
-    <description>EL함수에서 실행</description>
+    <description>EL에서 함수실행</description>
     <tlib-version>1.0</tlib-version>
     <short-name>ELfunctions</short-name>
     <uri>/ELFunctions</uri>
     
-	<function>  <!-- EL에서 사용할 함수 정의 하나이 함수당 하나의 <function>객체에 매핑됩니다. --> 
+    <function>  <!-- EL에서 사용할 함수 정의 하나이 함수당 하나의 <function>객체에 매핑됩니다. --> 
         <description>말머리 출력</description> 
         <name>codeName</name>  <!-- <name>태그는 EL에서 사용할 함수의 이름 --> 
         <function-class>                   <!-- <function-class>함수의 기능을 제공할 클래스의  이름 --> 
@@ -54,7 +54,6 @@
             int qrcount( int,spring.model.qabbs.QReplyDAO ) 
         </function-signature> 
     </function>
-    
 
     
 </taglib>    

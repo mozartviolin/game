@@ -21,7 +21,6 @@
 body {
 	font-family: "Lato", sans-serif
 }
-
 .mySlides {
 	display: none
 }
@@ -41,10 +40,24 @@ body {
 				href="javascript:void(0)" onclick="myFunction()"
 				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> 
 				
-			<a href="${root}" class="w3-bar-item w3-button w3-padding-large">홈</a> 
-			<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">자유게시판</a>
+			<a href="${root}" class="w3-bar-item w3-button w3-padding-large">홈</a> 		
+			<a href="${root}/notice/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">공지사항</a>
+			<div class="w3-dropdown-hover">
+		    
+		    <button class="w3-button w3-padding-large">게임 <i class="fa fa-caret-down"></i></button>
+			    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+			      <a href="${root}/ticTacToe/omok_index" class="w3-bar-item w3-button">오목게임</a>
+			      <a href="${root}/mini_game/baseball" class="w3-bar-item w3-button">숫자야구</a>
+			      <a href="${root}/mini_game/brick" class="w3-bar-item w3-button">블록깨기</a>
+			      <a href="${root}/mini_game/rgbbomb" class="w3-bar-item w3-button">폭탄 해체</a>
+			    </div>
+		  	</div>			
 			<a href="${root}/ticTacToe/omok_index" class="w3-bar-item w3-button w3-padding-large w3-hide-small">오목게임</a>
-			<a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+			<a href="${root}/mini_game/baseball" class="w3-bar-item w3-button w3-padding-large w3-hide-small">숫자야구</a>
+			<a href="${root}/mini_game/brick" class="w3-bar-item w3-button w3-padding-large w3-hide-small">블록깨기</a>
+			<a href="${root}/mini_game/rgbbomb" class="w3-bar-item w3-button w3-padding-large w3-hide-small">폭탄 해체</a>
+			<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">자유게시판</a>
+			<a href="${root}/qabbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A게시판</a>
 			<a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
 			
 			<div class="w3-dropdown-hover w3-hide-small">
@@ -60,6 +73,8 @@ body {
 			  	</c:when>
 			  	<c:otherwise>
 			  		<c:if test="${grade!='1' }">
+				     <a class="w3-bar-item w3-button" href="${root}/message/list">받은 쪽지함</a> 
+				     <a class="w3-bar-item w3-button" href="${root}/message/fromlist">보낸 쪽지함</a> 
 				     <a class="w3-bar-item w3-button" href="${root}/member/read">나의 정보</a> 
 				     <a class="w3-bar-item w3-button" href="${root}/member/delete">회원탈퇴</a>
 			  		</c:if>
@@ -83,20 +98,33 @@ body {
 	<div id="navDemo"
 		class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top"
 		style="margin-top: 46px">
+		<a href="${root}/notice/list" class="w3-bar-item w3-button w3-padding-large"
+			>공지사항</a> 
 		<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large"
-			onclick="myFunction()">자유게시판</a> 
+			>자유게시판</a> 
+		<a href="${root}/qabbs/list" class="w3-bar-item w3-button w3-padding-large"
+			>Q&A게시판</a> 
 		
-		<a href="${root}/omok/index" class="w3-bar-item w3-button w3-padding-large"
-			onclick="myFunction()">오목게임</a> 
+			<c:choose>
+			  	<c:when test="${empty id }">
+			      <a class="w3-bar-item w3-button" href="${root}/member/agree">회원가입</a>
+			      <a class="w3-bar-item w3-button" href="${root}/member/login">로그인</a>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<c:if test="${grade!='1' }">
+				     <a class="w3-bar-item w3-button" href="${root}/message/list">받은 쪽지함</a> 
+				     <a class="w3-bar-item w3-button" href="${root}/message/fromlist">보낸 쪽지함</a> 
+				     <a class="w3-bar-item w3-button" href="${root}/member/read">나의 정보</a> 
+				     <a class="w3-bar-item w3-button" href="${root}/member/delete">회원탈퇴</a>
+			  		</c:if>
+				     <a class="w3-bar-item w3-button" href="${root}/member/logout">로그아웃</a>
+			  	</c:otherwise>
+			 </c:choose> 
+			  
+			  <c:if test="${not empty id && grade=='1' }">
+				   <a class="w3-bar-item w3-button" href="${root }/admin/list">회원목록</a>
+			  </c:if>
 		
-		<a href="#tour"	class="w3-bar-item w3-button w3-padding-large"
-			onclick="myFunction()">TOUR</a>
-			
-		<a href="#contact" class="w3-bar-item w3-button w3-padding-large"
-			onclick="myFunction()">CONTACT</a> 
-		
-		<a href="#"	class="w3-bar-item w3-button w3-padding-large" 
-			onclick="myFunction()">MERCH</a>
 	</div>
 
 <!-- 상단 메뉴 끝 -->

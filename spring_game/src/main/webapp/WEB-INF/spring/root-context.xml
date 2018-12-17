@@ -89,14 +89,14 @@
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
 			<list>
-					<value>/WEB-INF/spring/member.xml</value>
-	 				<value>/WEB-INF/spring/bbs.xml</value>
-<!-- 				<value>/WEB-INF/spring/breply.xml</value>  -->
-<!-- 				<value>/WEB-INF/spring/notice.xml</value> -->
-<!-- 				<value>/WEB-INF/spring/nreply.xml</value> -->
-<!-- 				<value>/WEB-INF/spring/message.xml</value> -->
-					<value>/WEB-INF/spring/qabbs.xml</value>
-					<value>/WEB-INF/spring/survey.xml</value>
+				<value>/WEB-INF/spring/member.xml</value>
+ 				<value>/WEB-INF/spring/bbs.xml</value>
+ 				<value>/WEB-INF/spring/qabbs.xml</value>
+				<value>/WEB-INF/spring/survey.xml</value>
+ 				<value>/WEB-INF/spring/notice.xml</value>
+				<value>/WEB-INF/spring/nreply.xml</value>
+				<value>/WEB-INF/spring/message.xml</value>
+				<value>/WEB-INF/spring/mini_game.xml</value>
 			</list>
 		</property>
 	</bean>

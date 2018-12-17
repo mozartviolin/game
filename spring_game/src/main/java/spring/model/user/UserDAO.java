@@ -1,46 +1,53 @@
 package spring.model.user;
 
 import java.util.List;
-import java.util.Map;
 
-import spring.model.stdinter.DAOSTDInter;
 
-public class UserDAO implements DAOSTDInter{
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-	@Override
-	public boolean create(Object dto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+import spring.model.member.MemberDTO;
+
+
+
+
+@Repository
+public class UserDAO {
+	
+	@Autowired
+	private SqlSessionTemplate mybatis;
+		
+	public void setMybatis(SqlSessionTemplate mybatis) {
+		this.mybatis = mybatis;
+	}
+	
+	
+	
+	public boolean create(String nicname) {
+		boolean flag = false;
+		int cnt=mybatis.insert("userlist.create",nicname);
+		if(cnt>0)
+			flag=true;
+		return flag;
+
+	}
+	
+	public boolean delete(String nicname) {
+		boolean flag = false;
+		int cnt = mybatis.delete("userlist.delete",nicname);
+		if(cnt>0)
+			flag=true;
+		return flag;
+
+	}
+	
+	public List<UserDTO> list() {
+		return mybatis.selectList("userlist.list");
 	}
 
-	@Override
-	public List list(Map map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Object read(Object pk) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public boolean update(Object dto) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public boolean delete(Object pk) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int total(Map map) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

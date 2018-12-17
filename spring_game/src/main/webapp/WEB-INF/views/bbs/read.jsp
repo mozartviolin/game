@@ -14,7 +14,6 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-
 function blist(){
 	var url = "list";
 	url = url + "?col=${param.col}";
@@ -23,7 +22,6 @@ function blist(){
 	
 	location.href = url;
 }
-
 function bupdate(){
 	var url = "update";
 	url = url + "?bbsno=${bbsDTO.bbsno}";
@@ -34,7 +32,6 @@ function bupdate(){
 	
 	location.href = url;
 }
-
 function bdelete(){
 	var url = "delete";
 	url = url + "?bbsno=${bbsDTO.bbsno}";
@@ -45,7 +42,6 @@ function bdelete(){
 	
 	location.href = url;
 }
-
 function fileDown(){
 	var url = "${root}/download";
 	url = url + "?filename=${bbsDTO.filename}";
@@ -53,7 +49,6 @@ function fileDown(){
 	
 	location.href = url;
 }
-
 function input(f){
 	if('${sessionScope.nicname}'==''){
 		if(confirm("로그인을 해주세요.")){
@@ -76,7 +71,6 @@ function input(f){
 		return false;
 	}
 }
-
 function rupdate(breplyno,content){
 	var f = document.rform;
 	f.content.value = content;
@@ -84,7 +78,6 @@ function rupdate(breplyno,content){
 	f.rbutton.value='수정';
 	f.action = "./rupdate";
 }
-
 function rdelete(breplyno){
 	if(confirm("정말 삭제하시겠습니까?")){
 		var url = "./rdelete";
@@ -98,7 +91,6 @@ function rdelete(breplyno){
 		location.href = url;
 	}
 }
-
 </script>
 
 </head>

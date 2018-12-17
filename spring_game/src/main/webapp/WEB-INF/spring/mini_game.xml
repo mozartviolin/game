@@ -5,22 +5,22 @@
 
 <tiles-definitions>
 	
-	<definition name="/game/baseball" extends="main">
+	<definition name="/mini_game/baseball" extends="main">
 		<put-attribute name="title" value="img"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/game/baseball.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/mini_game/baseball.jsp" />
 	</definition>
 
-	<definition name="/game/brick" extends="main">
+	<definition name="/mini_game/brick" extends="main">
 		<put-attribute name="title" value="game test"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/game/brick.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/mini_game/brick.jsp" />
 	</definition>
 
-	<definition name="/game/rgbbomb" extends="main">
+	<definition name="/mini_game/rgbbomb" extends="main">
 		<put-attribute name="title" value="img 수정"></put-attribute>
-		<put-attribute name="body" value="/WEB-INF/views/game/rgbbomb.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/mini_game/rgbbomb.jsp" />
 	</definition>
 	
-	<definition name="/ticTacToe/omok_index" extends="main">
+		<definition name="/ticTacToe/omok_index" extends="main">
 		<put-attribute name="title" value="img 수정"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/omok_index.jsp" />
 	</definition>

@@ -10,26 +10,26 @@ public class Mini_gameController {
 
 	
 	
-	@RequestMapping("/game/baseball")
+	@RequestMapping("/mini_game/baseball")
 	public String baseball() {
-		return "/game/baseball";
+		return "/mini_game/baseball";
 	}
 	
-	@RequestMapping("/game/brick")
+	@RequestMapping("/mini_game/brick")
 	public String brick() {
 		System.out.print("확인");
-		return "/game/brick";
+		return "/mini_game/brick";
 	}
 	
-	@RequestMapping("/game/rgbbomb")
+	@RequestMapping("mini_game/rgbbomb")
 	public String rgbbomb() {
-		return "/game/rgbbomb";
+		return "/mini_game/rgbbomb";
 	}
 
 	
 	@RequestMapping("/ticTacToe/omok_index")
 		public String omok(String id, HttpSession session) {
-		System.out.print("확인");
+		
 		 return "/ticTacToe/omok_index";
 		}
 	

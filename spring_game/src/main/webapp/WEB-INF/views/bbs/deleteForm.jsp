@@ -22,6 +22,8 @@
 <br>
 <p>삭제하시면 복구할 수 없습니다.<br>삭제를 원하시면 비밀번호를 입력하세요.</p>
 
+
+
 <form name="frm" method="post" action="./delete">
 
 <input type="hidden" name="bbsno" value="${param.bbsno }">
