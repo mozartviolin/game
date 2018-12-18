@@ -70,6 +70,7 @@ function incheck(f){
 	<option value="A02">숫자야구</option>
 	<option value="A03">벽돌깨기</option>
 	<option value="A04">폭탄해체</option>
+	<option value="A11">똥피하기</option>
 	<option value="A10">기타</option>
 	</select>
 	</td>

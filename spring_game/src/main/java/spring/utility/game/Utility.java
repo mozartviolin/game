@@ -284,6 +284,7 @@ public class Utility {
 		codes.put("A03", "벽돌깨기");
 		codes.put("A04", "폭탄해체");
 		codes.put("A10", "기타");
+		codes.put("A11", "똥피하기");
 		
 		value = (String)codes.get(code);
 		

@@ -20,7 +20,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/mini_game/rgbbomb.jsp" />
 	</definition>
 	
-		<definition name="/ticTacToe/omok_index" extends="main">
+<!-- 	<definition name="/mini_game/dung" extends="main">
+		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/mini_game/dung.jsp" />
+	</definition> -->
+	
+	<definition name="/ticTacToe/omok_index" extends="main">
 		<put-attribute name="title" value="img 수정"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/omok_index.jsp" />
 	</definition>

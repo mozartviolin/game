@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import spring.model.member.MemberDAO;
 import spring.model.member.MemberDTO;
 import spring.model.user.UserDAO;
+import spring.model.user.UserDTO;
 import spring.utility.game.Utility;
 
 @Controller
@@ -331,13 +332,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/loginc")
-	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, HttpServletResponse response,
-			Model model, HttpServletRequest request) {
+	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, 
+			HttpServletResponse response, Model model, HttpServletRequest request,
+			UserDTO userDTO) {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
-		//System.out.println("1번 : "+nickName);
-		
+		System.out.println("1번 uniqId : "+uniqId);		
+		System.out.println("1번 nickName : "+nickName);		
 		
 		if(uniqId != null && nickName != null) {
 			
@@ -345,12 +347,16 @@ public class MemberController {
 			session.setAttribute("grade", "0");
 			session.setAttribute("nicname", nickName);
 			String sessionNicname=(String)session.getAttribute("nicname");
-			udao.create(sessionNicname);
-			
-			
-			
+			udao.create(sessionNicname);			
 			
 			return "redirect:/";
+		}
+		
+		if(uniqId == null && nickName == null) {			
+			String sessionNicname=(String)request.getParameter("id");
+			//System.out.println(sessionNicname);
+			udao.delete(sessionNicname);		
+			//System.out.println("udao 삭제함");
 		}
 		
 		//System.out.println("2번 : "+session.getAttribute("nicname"));
@@ -366,11 +372,11 @@ public class MemberController {
 			//System.out.println("3번 : "+nickName);
 			session.setAttribute("id", id);
 			session.setAttribute("grade", gmap.get("GRADE"));
-			session.setAttribute("nicname", gmap.get("NICNAME"));
-			
+			session.setAttribute("nicname", gmap.get("NICNAME"));			
 			
 			String sessionNicname=(String)session.getAttribute("nicname");
 			udao.create(sessionNicname);
+			System.out.println("udao 만듬");
 			
 //			if(nickName != null) {
 //				System.out.println("sksksk");

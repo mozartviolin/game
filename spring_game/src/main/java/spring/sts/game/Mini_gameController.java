@@ -25,6 +25,11 @@ public class Mini_gameController {
 	public String rgbbomb() {
 		return "/mini_game/rgbbomb";
 	}
+	
+	@RequestMapping("mini_game/dung")
+	public String dung() {
+		return "/mini_game/dung";
+	}
 
 	
 	@RequestMapping("/ticTacToe/omok_index")

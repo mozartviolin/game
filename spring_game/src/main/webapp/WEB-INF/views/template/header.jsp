@@ -8,7 +8,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Game</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -25,6 +25,41 @@ body {
 	display: none
 }
 </style>
+
+<SCRIPT LANGUAGE="javaScript"> 
+function CenterWin(url,winname,features) 
+{ 
+
+features = features.toLowerCase(); 
+len = features.length; 
+sumchar= ""; 
+for (i=1; i <= len; i++) // 빈칸 제거 
+{ 
+onechar = features.substr(i-1, 1); 
+if (onechar != " ") sumchar += onechar; 
+} 
+
+features = sumchar; 
+sp = new Array(); 
+sp = features.split(',', 10); // 배열에 옵션을 분리해서 입력 
+splen = sp.length; // 배열 갯수 
+for (i=0; i < splen; i++) // width, height 값을 구하기 위한 부분 
+{ 
+if (sp[i].indexOf("width=") == 0) // width 값일때 
+{ 
+width = Number(sp[i].substring(6)); 
+} else if (sp[i].indexOf("height=") == 0) // height 값일때 
+{ 
+height = Number(sp[i].substring(7)); 
+} 
+} 
+sleft = (screen.width - width) / 2; 
+stop = (screen.height - height) / 2; 
+features = features + ",left=" + sleft + ",top=" + stop; 
+popwin = window.open(url,winname,features); 
+} 
+//
+</SCRIPT> 
 
 
 </head>
@@ -44,18 +79,22 @@ body {
 			<a href="${root}/notice/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">공지사항</a>
 			<div class="w3-dropdown-hover">
 		    
-		    <button class="w3-button w3-padding-large">게임 <i class="fa fa-caret-down"></i></button>
+		    <button class="w3-button w3-padding-large">게임<i class="fa fa-caret-down"></i></button>
 			    <div class="w3-dropdown-content w3-bar-block w3-card-4">
 			      <a href="${root}/ticTacToe/omok_index" class="w3-bar-item w3-button">오목게임</a>
 			      <a href="${root}/mini_game/baseball" class="w3-bar-item w3-button">숫자야구</a>
 			      <a href="${root}/mini_game/brick" class="w3-bar-item w3-button">블록깨기</a>
 			      <a href="${root}/mini_game/rgbbomb" class="w3-bar-item w3-button">폭탄 해체</a>
+			      <a href="javascript:CenterWin('${root}/mini_game/dung',''
+			      ,'width=380, height=460')" class="w3-bar-item w3-button">
+			      똥피하기</a>
 			    </div>
 		  	</div>			
-			<a href="${root}/ticTacToe/omok_index" class="w3-bar-item w3-button w3-padding-large w3-hide-small">오목게임</a>
+<%-- 		<a href="${root}/ticTacToe/omok_index" class="w3-bar-item w3-button w3-padding-large w3-hide-small">오목게임</a>
 			<a href="${root}/mini_game/baseball" class="w3-bar-item w3-button w3-padding-large w3-hide-small">숫자야구</a>
 			<a href="${root}/mini_game/brick" class="w3-bar-item w3-button w3-padding-large w3-hide-small">블록깨기</a>
 			<a href="${root}/mini_game/rgbbomb" class="w3-bar-item w3-button w3-padding-large w3-hide-small">폭탄 해체</a>
+			<a href="${root}/mini_game/dung" class="w3-bar-item w3-button w3-padding-large w3-hide-small">똥피하기</a> --%>
 			<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">자유게시판</a>
 			<a href="${root}/qabbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A게시판</a>
 			<a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
