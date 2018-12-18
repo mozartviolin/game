@@ -338,8 +338,6 @@ public class MemberController {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
-		System.out.println("1번 uniqId : "+uniqId);		
-		System.out.println("1번 nickName : "+nickName);		
 		
 		if(uniqId != null && nickName != null) {
 			
@@ -376,7 +374,7 @@ public class MemberController {
 			
 			String sessionNicname=(String)session.getAttribute("nicname");
 			udao.create(sessionNicname);
-			System.out.println("udao 만듬");
+			//System.out.println("udao 만듬");
 			
 //			if(nickName != null) {
 //				System.out.println("sksksk");
