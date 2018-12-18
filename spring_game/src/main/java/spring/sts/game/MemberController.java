@@ -338,8 +338,8 @@ public class MemberController {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
-		System.out.println("uniqId : " + uniqId);
-		System.out.println("nickName : " + nickName);
+		//System.out.println("uniqId : " + uniqId);
+		//System.out.println("nickName : " + nickName);
 		
 		if(uniqId != null && nickName != null) {
 			
@@ -353,13 +353,13 @@ public class MemberController {
 		}
 		
 		if(uniqId == null && nickName == null) {	
-			System.out.println(" request.getParameter(id) : " + request.getParameter("id"));			
+			//System.out.println(" request.getParameter('id') : " + request.getParameter("id"));			
 			String id = request.getParameter("id");
 			memberDTO = (MemberDTO) memberDAO.read(id);
 			String sessionNicname= memberDTO.getNicname();
-			System.out.println(sessionNicname);
+			//System.out.println(sessionNicname);
 			udao.delete(sessionNicname);		
-			System.out.println("udao 삭제함");
+			//System.out.println("udao 삭제함");
 		}
 		
 		//System.out.println("2번 : "+session.getAttribute("nicname"));
