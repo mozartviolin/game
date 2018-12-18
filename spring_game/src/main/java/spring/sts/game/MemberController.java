@@ -334,10 +334,12 @@ public class MemberController {
 	@RequestMapping("/member/loginc")
 	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, 
 			HttpServletResponse response, Model model, HttpServletRequest request,
-			UserDTO userDTO) {
+			UserDTO userDTO, MemberDTO memberDTO) throws Exception {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
+		System.out.println("uniqId : " + uniqId);
+		System.out.println("nickName : " + nickName);
 		
 		if(uniqId != null && nickName != null) {
 			
@@ -350,11 +352,14 @@ public class MemberController {
 			return "redirect:/";
 		}
 		
-		if(uniqId == null && nickName == null) {			
-			String sessionNicname=(String)request.getParameter("id");
-			//System.out.println(sessionNicname);
+		if(uniqId == null && nickName == null) {	
+			System.out.println(" request.getParameter(id) : " + request.getParameter("id"));			
+			String id = request.getParameter("id");
+			memberDTO = (MemberDTO) memberDAO.read(id);
+			String sessionNicname= memberDTO.getNicname();
+			System.out.println(sessionNicname);
 			udao.delete(sessionNicname);		
-			//System.out.println("udao 삭제함");
+			System.out.println("udao 삭제함");
 		}
 		
 		//System.out.println("2번 : "+session.getAttribute("nicname"));
@@ -373,6 +378,7 @@ public class MemberController {
 			session.setAttribute("nicname", gmap.get("NICNAME"));			
 			
 			String sessionNicname=(String)session.getAttribute("nicname");
+			System.out.println(sessionNicname);
 			udao.create(sessionNicname);
 			//System.out.println("udao 만듬");
 			
