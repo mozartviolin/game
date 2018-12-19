@@ -38,5 +38,17 @@ public class Mini_gameController {
 		 return "/ticTacToe/omok_index";
 		}
 	
+	@RequestMapping("/ticTacToe/list")
+	public String omoklist(String id, HttpSession session) {
+	
+	 return "/ticTacToe/list";
+	}
+	
+	/*@RequestMapping("/ticTacToe/game")
+	public String omokgame(String id, HttpSession session) {
+		
+		return "/ticTacToe/game";
+	}*/
+	
 	
 }

@@ -30,6 +30,16 @@
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/omok_index.jsp" />
 	</definition>
 	
+	<definition name="/ticTacToe/list" extends="main">
+		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/list.jsp" />
+	</definition>
+	
+<!-- <definition name="/ticTacToe/game" extends="main">
+		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/game.jsp" />
+	</definition> -->
+	
 
 
 

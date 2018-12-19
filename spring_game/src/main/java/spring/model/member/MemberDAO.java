@@ -3,9 +3,14 @@ package spring.model.member;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import spring.model.user.UserDAO;
 
 @Repository
 public class MemberDAO implements IMemeberDAO{
@@ -119,5 +124,6 @@ public class MemberDAO implements IMemeberDAO{
 		// TODO Auto-generated method stub
 		return mysql.selectOne("member.getGrade", id);
 	}
+	
 
 }

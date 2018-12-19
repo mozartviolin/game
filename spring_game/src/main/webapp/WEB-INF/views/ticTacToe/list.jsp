@@ -9,7 +9,7 @@
     </head>
     <body>
         <h2>Tic Tac Toe</h2>
-        <a href="javascript:void 0;" onclick="startGame();">Start a Game</a><br />
+        <a href="javascript:void 0;" onclick="startGame();" >Start a Game</a><br />
         <br />
         <c:choose>
             <c:when test="${fn:length(pendingGames) == 0}">
@@ -18,7 +18,7 @@
             <c:otherwise>
                 Join a game waiting for a second player:<br />
                 <c:forEach items="${pendingGames}" var="e">
-                    <a href="javascript:void 0;" onclick="joinGame(${e.key});">User: ${e.value}</a><br />
+                    <a href="javascript:void 0;" onclick="joinGame(${e.key});" >User: ${e.value}</a><br />
                 </c:forEach>
             </c:otherwise>
         </c:choose>
@@ -34,6 +34,7 @@
                     if(username != null && username.trim().length > 0 &&
                             validateUsername(username))
                         post({action: 'start', username: username}); //문제부분 예상
+                    
                 };
 
                 joinGame = function(gameId) {

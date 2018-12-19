@@ -353,7 +353,7 @@ public class MemberController {
 		}
 		
 		if(uniqId == null && nickName == null) {	
-			//System.out.println(" request.getParameter('id') : " + request.getParameter("id"));			
+			//System.out.println(" request.getParameter('id') : " + request.getParameter("id"));
 			String id = request.getParameter("id");
 			memberDTO = (MemberDTO) memberDAO.read(id);
 			String sessionNicname= memberDTO.getNicname();
@@ -369,7 +369,7 @@ public class MemberController {
 		
 		String url = "/error/passwdError";
 				
-		if(flag ) {
+		if(flag) {
 			Map gmap = memberDAO.getGradeAnicname(id);
 			
 			//System.out.println("3번 : "+nickName);
@@ -438,10 +438,15 @@ public class MemberController {
 				model.addAttribute("nowPage", nowPage);
 			}
 		}
+				
+		
 		
 		return url;
 	}
 
+	
+	
+	
 	@RequestMapping("/admin/list")
 	public String list(HttpServletRequest request, Model model) {
 		

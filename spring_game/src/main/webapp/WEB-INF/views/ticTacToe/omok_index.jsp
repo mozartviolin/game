@@ -12,7 +12,7 @@
 <div style="width:80%; text-align: center; margin: 0 auto;">
     
         <h2>Games</h2>
-        <a href="<c:url value="/ticTacToe" />">Tic Tac Toe</a>
+        <a href="<c:url value="/ticTacToe/list" />">Tic Tac Toe</a>
         
      </div>
      <br>

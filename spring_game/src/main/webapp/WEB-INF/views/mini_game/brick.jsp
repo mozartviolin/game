@@ -140,7 +140,6 @@ window.onload=function (){
     function clear() {
         ctx.clearRect(0, 0, width, height);
 
-
     }
      
     // 사각형을 그리기 위한 함수 

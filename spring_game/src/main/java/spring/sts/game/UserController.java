@@ -12,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.member.MemberDAO;
-import spring.model.member.MemberDTO;
-import spring.model.user.UserDAO;
 import spring.model.user.UserDTO;
 
 public class UserController {
@@ -21,12 +19,6 @@ public class UserController {
 	
 	@Autowired
 	private MemberDAO dao;
-	
-	@Autowired
-	private UserDAO udao;
-	
-	@Autowired
-	private MemberDTO dto;
 	
 	@Autowired
 	private UserDTO udto;
@@ -47,7 +39,13 @@ public class UserController {
 		}
 		
 		model.addAttribute("userid", userid);
-		model.addAttribute("udto",udto);
+		model.addAttribute("udto", udto);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="")
+	public String du_list() {
+		
 		return "redirect:/";
 	}
 }

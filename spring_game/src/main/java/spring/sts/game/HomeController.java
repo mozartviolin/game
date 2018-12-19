@@ -2,10 +2,8 @@ package spring.sts.game;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -48,9 +46,9 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
+				
 		List<UserDTO> list =udao.list();
-
+		
 		model.addAttribute("list",list);
 		model.addAttribute("serverTime", formattedDate );
 		
