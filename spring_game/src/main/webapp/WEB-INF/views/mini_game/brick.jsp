@@ -22,7 +22,7 @@ var w;
 function startWorker() {
     if(typeof(Worker) !== "undefined") {
         if(typeof(w) == "undefined") {
-            w = new Worker("${root}/mini_game/demo_workers.js");
+            w = new Worker("${root}/js/demo_workers.js");
         }
         w.onmessage = function(event) {
             document.getElementById("time_game").innerHTML = event.data;

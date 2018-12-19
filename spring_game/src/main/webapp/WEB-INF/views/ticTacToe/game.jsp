@@ -10,14 +10,63 @@
     <head>
         <title>Game Site :: Tic Tac Toe</title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
-        <link rel="stylesheet"
-              href="<c:url value="/resource/stylesheet/ticTacToe.css" />" />
+<%--         <link rel="stylesheet"
+              href="<c:url value="/resource/stylesheet/ticTacToe.css" />" /> --%>
+       <%--  <link href="${root}/stylesheet/ticTacToe.css" type="text/css" rel="stylesheet"/> --%>      
+              
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <style type="text/css">
         div{
         text-align:center;
         }
+        
+        /* ticTacToe.css 를 game.jsp로 가져옴 */
+        .game-cell {
+		    width: 30px;
+		    height: 30px;
+		    background-color: #EEEEEE;
+		    -webkit-border-radius: 3px;
+		    -moz-border-radius: 3px;
+		    border-radius: 3px;
+		    margin-left: 4px;
+		}
+        
+        .game-cell-player {
+		    background-image: url('../game/resource/image/30black.png');
+		}
+		.game-cell-opponent {
+		    background-image: url('../game/resource/image/30white.png');
+		}
+		
+		/*[class^="icon-"],[class*=" icon-"] {
+		background-image:url("../img/glyphicons-halflings.png");
+		}*/
+		
+		#gameContainer .row {
+		    margin: 4px 0 4px 0;
+		}
+		
+		.game-cell-selectable {
+		    cursor: pointer;
+		}
+		.game-cell-selectable:hover {
+		    background-image: url('../image/ticTacToe-hover.png');
+		}
+		.game-cell-taken {
+		
+		}
+		
+		.player-label {
+		    font-weight: bold;
+		}
+		#status {
+		    font-weight: bold;
+		    font-style: italic;
+		}
+		
+		 /* ticTacToe.css 를 game.jsp로 가져옴 끝 */
+        
         </style>
     </head>
     <body>

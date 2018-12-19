@@ -378,7 +378,7 @@ public class MemberController {
 			session.setAttribute("nicname", gmap.get("NICNAME"));			
 			
 			String sessionNicname=(String)session.getAttribute("nicname");
-			System.out.println(sessionNicname);
+			//System.out.println(sessionNicname);
 			udao.create(sessionNicname);
 			//System.out.println("udao 만듬");
 			

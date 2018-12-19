@@ -12,7 +12,7 @@
 			});
 		</script>
 		<link rel="stylesheet" media="screen" type="text/css" 
-			href="${pageContext.request.contextPath }/resource/stylesheet/dung.css" />
+			href="${pageContext.request.contextPath }/js/dung.css" />
 	
 	<title>똥피하기</title>		
 	
@@ -21,7 +21,6 @@
 	
 		<a href="#" id="screen" onclick="return false;"></a>
 		<input type="text" id="score" value="0" readonly="true" size="5">
-		
-		
+				
 	</body>
 </html>
