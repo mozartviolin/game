@@ -456,8 +456,6 @@ function brickbreak(){
 
 <BR><BR>
 
-<div style="width:80%; text-align: center; margin: 0 auto;">
-
 	<DIV>
 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="start" onclick="game_brick()">게임시작</button>
@@ -472,7 +470,6 @@ function brickbreak(){
 
 	</DIV>
 
-</div>
 <br>
 <br>
 
