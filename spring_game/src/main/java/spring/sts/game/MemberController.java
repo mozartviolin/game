@@ -336,7 +336,7 @@ public class MemberController {
 	@RequestMapping("/member/loginc")
 	public String login(@RequestParam Map<String,String> map, String c_id, HttpSession session, 
 			HttpServletResponse response, Model model, HttpServletRequest request,
-			UserDTO userDTO, MemberDTO memberDTO) throws Exception {
+			UserDTO userDTO, MemberDTO memberDTO,String passwd) throws Exception {
 		
 		String uniqId = request.getParameter("uniqId");
 		String nickName = request.getParameter("nickName"); 
@@ -379,41 +379,12 @@ public class MemberController {
 			session.setAttribute("id", id);
 			session.setAttribute("grade", gmap.get("GRADE"));
 			session.setAttribute("nicname", gmap.get("NICNAME"));	
-			
-			/* ArrayList<String> niclist = (ArrayList)session.getAttribute("");
-			 String s_id = request.getParameter("id");
-			 memberDTO = (MemberDTO) memberDAO.read(s_id);
-			 String sNicname= memberDTO.getNicname();
-			 
-			 if(niclist==null)
-			 {
-			  niclist = new ArrayList<String>();
-			  session.setAttribute("niclist", niclist);
-			 }
-			 niclist.add(sNicname);			 
-			 
-			 for(int i=0;i<niclist.size(); i++) {
-			    System.out.println(niclist.get(i) + "<br>");
-			 }
-		 */
-			
+					
 			String sessionNicname=(String)session.getAttribute("nicname");
 			//System.out.println(sessionNicname);
 			udao.create(sessionNicname);
 			//System.out.println("udao 만듬");
-			
-//			if(nickName != null) {
-//				System.out.println("sksksk");
-//				System.out.println(nickName);
-//				udao.create(nickName);
-//				
-//			}else if(session.getAttribute("nicname") != null) {
-//				System.out.println(session.getAttribute("nicname"));
-//				String sessionNicname=(String)session.getAttribute("nicname");
-//				udao.create(sessionNicname);
-//			}
-//			
-//			
+		
 			Cookie cookie = null;
 			
 			if(c_id != null) {
@@ -463,33 +434,9 @@ public class MemberController {
 			}
 		}
 		
-		HttpSession dummySession = request.getSession(true);
-		 dummySession.putValue(request.getParameter("id"), request.getParameter("nicname"));
-		 HttpSessionContext context = dummySession.getSessionContext();
-		 int i = 0;
-		  Enumeration ids = context.getIds();
-		  System.out.println("========================================");   
-		  System.out.println("No  SessionID  UserID");   
-		  System.out.println("========================================");   
-		  while (ids.hasMoreElements()) {
-		   i++;
-		   String ssid = (String) ids.nextElement();
-		   session = context.getSession(ssid);
-		   String user_id = (String)session.getValue(request.getParameter("id"));
-		   System.out.print("(" + i + ")" + id );
-		   System.out.println("  userID = [" + user_id + "]");   
-		  }
-		  System.out.println("========================================");   
-		  System.out.println("Total Connect User : " + i );
-		  System.out.println("========================================");   
-		  System.out.flush();
-		 
 		return url;
 		
-	}
-
-	
-	
+	}	
 	
 	@RequestMapping("/admin/list")
 	public String list(HttpServletRequest request, Model model) {
