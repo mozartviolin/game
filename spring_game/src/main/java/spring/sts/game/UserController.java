@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserDTO udto;
 	
-	@RequestMapping(value="")
+	@RequestMapping(value="/")
 	public String userlist(HttpSession session,String id, String passwd,Model model) {
 		List<String> user;
 		Map map = new HashMap();

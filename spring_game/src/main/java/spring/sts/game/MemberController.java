@@ -1,6 +1,7 @@
 package spring.sts.game;
 
-
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -368,14 +370,32 @@ public class MemberController {
 		boolean flag = memberDAO.loginCheck(map);
 		
 		String url = "/error/passwdError";
-				
+		
+
 		if(flag) {
 			Map gmap = memberDAO.getGradeAnicname(id);
 			
 			//System.out.println("3번 : "+nickName);
 			session.setAttribute("id", id);
 			session.setAttribute("grade", gmap.get("GRADE"));
-			session.setAttribute("nicname", gmap.get("NICNAME"));			
+			session.setAttribute("nicname", gmap.get("NICNAME"));	
+			
+			/* ArrayList<String> niclist = (ArrayList)session.getAttribute("");
+			 String s_id = request.getParameter("id");
+			 memberDTO = (MemberDTO) memberDAO.read(s_id);
+			 String sNicname= memberDTO.getNicname();
+			 
+			 if(niclist==null)
+			 {
+			  niclist = new ArrayList<String>();
+			  session.setAttribute("niclist", niclist);
+			 }
+			 niclist.add(sNicname);			 
+			 
+			 for(int i=0;i<niclist.size(); i++) {
+			    System.out.println(niclist.get(i) + "<br>");
+			 }
+		 */
 			
 			String sessionNicname=(String)session.getAttribute("nicname");
 			//System.out.println(sessionNicname);
@@ -426,22 +446,46 @@ public class MemberController {
 			String breplyno = request.getParameter("breplyno");
 			String col = request.getParameter("col");
 			String word = request.getParameter("word");
-			String nowPage = request.getParameter("nowPage");
-			
+			String nowPage = request.getParameter("nowPage");			
+			String qano = request.getParameter("qano");
+			String rnum = request.getParameter("rnum");
+
 			if(rflag != null && !rflag.equals("")) {
 				url = "redirect:" + rflag;
 				model.addAttribute("bbsno", bbsno);
 				model.addAttribute("breplyno", breplyno);
+				model.addAttribute("qano", qano);
+				model.addAttribute("rnum", rnum);
 				model.addAttribute("nPage", nPage);
 				model.addAttribute("col", col);
 				model.addAttribute("word", word);
 				model.addAttribute("nowPage", nowPage);
 			}
 		}
-				
 		
-		
+		HttpSession dummySession = request.getSession(true);
+		 dummySession.putValue(request.getParameter("id"), request.getParameter("nicname"));
+		 HttpSessionContext context = dummySession.getSessionContext();
+		 int i = 0;
+		  Enumeration ids = context.getIds();
+		  System.out.println("========================================");   
+		  System.out.println("No  SessionID  UserID");   
+		  System.out.println("========================================");   
+		  while (ids.hasMoreElements()) {
+		   i++;
+		   String ssid = (String) ids.nextElement();
+		   session = context.getSession(ssid);
+		   String user_id = (String)session.getValue(request.getParameter("id"));
+		   System.out.print("(" + i + ")" + id );
+		   System.out.println("  userID = [" + user_id + "]");   
+		  }
+		  System.out.println("========================================");   
+		  System.out.println("Total Connect User : " + i );
+		  System.out.println("========================================");   
+		  System.out.flush();
+		 
 		return url;
+		
 	}
 
 	

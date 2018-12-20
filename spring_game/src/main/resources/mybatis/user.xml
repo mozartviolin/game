@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" resultType="UserDTO">                                           
 		select nicname, udate from userlist                                                                              
-        order by udate desc                                            
+        order by udate desc                           
                                                                                                                        
 
 </select>
