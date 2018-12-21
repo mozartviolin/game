@@ -6,17 +6,17 @@
 <tiles-definitions>
 	
 	<definition name="/mini_game/baseball" extends="main">
-		<put-attribute name="title" value="img"></put-attribute>
+		<put-attribute name="title" value="숫자야구"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/mini_game/baseball.jsp" />
 	</definition>
 
 	<definition name="/mini_game/brick" extends="main">
-		<put-attribute name="title" value="game test"></put-attribute>
+		<put-attribute name="title" value="블록깨기"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/mini_game/brick.jsp" />
 	</definition>
 
 	<definition name="/mini_game/rgbbomb" extends="main">
-		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="title" value="폭탄 해체"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/mini_game/rgbbomb.jsp" />
 	</definition>
 	
@@ -26,17 +26,17 @@
 	</definition> -->
 	
 	<definition name="/ticTacToe/omok_index" extends="main">
-		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="title" value="오목게임 메인"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/omok_index.jsp" />
 	</definition>
 	
-	<definition name="/ticTacToe/list" extends="main">
-		<put-attribute name="title" value="img 수정"></put-attribute>
+ 	<definition name="/ticTacToe/list" extends="main">
+		<put-attribute name="title" value="오목게임 리스트"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/list.jsp" />
 	</definition>
 	
 <!-- <definition name="/ticTacToe/game" extends="main">
-		<put-attribute name="title" value="img 수정"></put-attribute>
+		<put-attribute name="title" value="오목게임"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/ticTacToe/game.jsp" />
 	</definition> -->
 	

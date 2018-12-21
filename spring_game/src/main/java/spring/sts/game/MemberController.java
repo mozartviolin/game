@@ -30,9 +30,7 @@ public class MemberController {
 	private MemberDAO memberDAO;
 	
 	@Autowired
-	private UserDAO udao;
-
-	
+	private UserDAO udao;	
 	
 	@RequestMapping("/member/callback")
 	public String callback() {

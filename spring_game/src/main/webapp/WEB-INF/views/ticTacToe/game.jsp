@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Game Site :: Tic Tac Toe</title>
+        <title>Game :: Tic Tac Toe</title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
 <%--         <link rel="stylesheet"
               href="<c:url value="/resource/stylesheet/ticTacToe.css" />" /> --%>

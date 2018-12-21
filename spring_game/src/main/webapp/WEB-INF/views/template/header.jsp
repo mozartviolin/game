@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/ssi/ssi.jsp" %>
-<jsp:useBean id="udao" class="spring.model.user.UserDAO"/>
+<jsp:useBean id="sc" class="spring.sts.game.SessionChecker" scope="application" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -138,8 +138,13 @@ popwin = window.open(url,winname,features);
 				</div>
 				
 			</div>
-			
+			<%
+    	session.setMaxInactiveInterval(120); // 걍 결과가 빨리 보고싶어서여.. 120초
+    	sc.setSession(session);
+	 	out.println("<p>&nbsp;&nbsp;온라인&nbsp; : &nbsp;" + sc.getNowUser() + "<p>");
+		%> 
 		</div>
+		
 		
 	</div>
 	
