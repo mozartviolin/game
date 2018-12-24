@@ -77,14 +77,32 @@ popwin = window.open(url,winname,features);
 <!-- 상단 메뉴 -->
 
 	<!-- Navbar -->
-	<div class="w3-top">
-		<div class="w3-bar w3-black w3-card">
+	<div class="w3-top" style='display:inline;'>
+		<div class="w3-bar w3-black w3-card" style='display:inline;float:left;'>
 			<a
 				class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
 				href="javascript:void(0)" onclick="myFunction()"
 				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> 
 				
-			<a href="${root}" class="w3-bar-item w3-button w3-padding-large">홈</a> 		
+			<a href="${root}" class="w3-bar-item w3-button w3-padding-large">홈</a> 	
+			
+				
+			<c:choose>
+			<c:when test="${empty id }">			
+				<a style='text-align:right;' href="${root}/member/login" 
+					class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그인</a>
+				<a style='text-align:right;' href="${root}/member/agree" 
+					class="w3-bar-item w3-button w3-padding-large w3-hide-small">회원가입</a>
+			</c:when>
+			<c:otherwise>
+				<a class="w3-bar-item w3-button w3-padding-large w3-hide-small" 
+					href="${root}/member/logout">로그아웃</a>
+			</c:otherwise>
+			
+			
+			</c:choose> 	
+			
+			
 			<a href="${root}/notice/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">공지사항</a>
 			<div class="w3-dropdown-hover">
 		    
@@ -106,9 +124,8 @@ popwin = window.open(url,winname,features);
 			<a href="${root}/mini_game/dung" class="w3-bar-item w3-button w3-padding-large w3-hide-small">똥피하기</a> --%>
 			<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">자유게시판</a>
 			<a href="${root}/qabbs/list" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Q&A게시판</a>
-			<a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
 			<a href="${root}/survey/survey" class="w3-bar-item w3-button w3-padding-large w3-hide-small">설문조사</a>
-			
+								
 			<div class="w3-dropdown-hover w3-hide-small">
 				<button class="w3-padding-large w3-button" title="More">
 					MORE <i class="fa fa-caret-down"></i>
@@ -117,8 +134,8 @@ popwin = window.open(url,winname,features);
 				
 				<c:choose>
 			  	<c:when test="${empty id }">
-			      <a class="w3-bar-item w3-button" href="${root}/member/agree">회원가입</a>
-			      <a class="w3-bar-item w3-button" href="${root}/member/login">로그인</a>
+			      <%-- <a class="w3-bar-item w3-button" href="${root}/member/agree">회원가입</a>
+			      <a class="w3-bar-item w3-button" href="${root}/member/login">로그인</a> --%>
 			  	</c:when>
 			  	<c:otherwise>
 			  		<c:if test="${grade!='1' }">
@@ -141,8 +158,12 @@ popwin = window.open(url,winname,features);
 			<%
     	session.setMaxInactiveInterval(120); // 걍 결과가 빨리 보고싶어서여.. 120초
     	sc.setSession(session);
-	 	out.println("<p>&nbsp;&nbsp;온라인&nbsp; : &nbsp;" + sc.getNowUser() + "<p>");
+	 	out.println("<p style='text-align:right'>&nbsp;&nbsp;온라인&nbsp; : &nbsp;" + sc.getNowUser() + "<p>");
 		%> 
+		</div>
+		
+		<div style='display:inline;float:right;'>
+		
 		</div>
 		
 		
