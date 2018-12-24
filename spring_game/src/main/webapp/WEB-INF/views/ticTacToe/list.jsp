@@ -35,9 +35,10 @@
             var startGame, joinGame;
             $(document).ready(function() {
                 var url = '<c:url value="/ticTacToe"/>';
-
+								
                 startGame = function() {
-                    var username = prompt('Enter a username to start a game.', '${sessionScope.nicname}');
+                    /* var username = prompt('닉네임을 입력하세요(방제로도 쓰임)','${sessionScope.nicname}'); */
+                    var username = prompt('닉네임을 입력하세요(방제로도 쓰임)','${sessionScope.nicname}');
                     if(username != null && username.trim().length > 0 &&
                             validateUsername(username))
                         post({action: 'start', username: username}); //ë¬¸ì ë¶ë¶ ìì
@@ -45,7 +46,7 @@
 
                 joinGame = function(gameId) {
                     var username =
-                            prompt('Enter a username to join this game.', '${sessionScope.nicname}');
+                            prompt('닉네임을 입력하세요', '${sessionScope.nicname}');
                     if(username != null && username.trim().length > 0 &&
                             validateUsername(username))
                         post({action: 'join', username: username, gameId: gameId});
@@ -93,18 +94,18 @@
             <input type="submit" value="send" onclick="send()" />
         </fieldset>
     </div>
-    <img class="chat" src="./img/chat.png" />
+    <img class="chat" src="./images/chathide.png" />
 
 <!-- 챗 스타트 -->
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
 	<script>
 	    $(".chat").on({
 	        "click" : function() {
-	            if ($(this).attr("src") == "./img/chat.png") {
-	                $(".chat").attr("src", "./img/chathide.png");
+	            if ($(this).attr("src") == "./images/chat.png") {
+	                $(".chat").attr("src", "./images/chathide.png");
 	                $("#_chatbox").css("display", "block");
-	            } else if ($(this).attr("src") == "./img/chathide.png") {
-	                $(".chat").attr("src", "./img/chat.png");
+	            } else if ($(this).attr("src") == "./images/chathide.png") {
+	                $(".chat").attr("src", "./images/chat.png");
 	                $("#_chatbox").css("display", "none");
 	            }
 	        }
