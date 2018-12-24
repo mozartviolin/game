@@ -246,6 +246,25 @@ public class MemberController {
 		return str;
 	}
 	
+	@RequestMapping("game/member/playlist")
+	public String playlist(String nicname) {
+				
+		memberDAO.playlist(nicname);		
+		
+		return null;
+		
+	}
+	
+	@RequestMapping("game/member/win")
+	public String win(String nicname) {
+		System.out.println("nicname : " + nicname);
+		
+		memberDAO.win(nicname);		
+		System.out.println("win 실행");
+		return null;
+		
+	}
+	
 	@RequestMapping("/member/createProc")
 	public String pcreate(Model model, HttpServletRequest request, MemberDTO memberDTO) {
 		

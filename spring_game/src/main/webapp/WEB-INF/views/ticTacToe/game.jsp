@@ -9,9 +9,10 @@
 <html>
     <head>
     
-<div style='display:inline;min-width:1200px;'>
     
-    <div style='display:inline;float:left;width:600px;align:center; text-align:center;'>
+<div style='display:inline;min-width:1050px;'>
+    
+    <div style='display:inline;float:left;width:550px;align:center; text-align:center;'>
         <title>Game :: Tic Tac Toe</title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
 <%--         <link rel="stylesheet"
@@ -363,7 +364,11 @@
                 <button class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
         </div>
+
+           
         <script type="text/javascript" language="javascript">
+              
+        
             var move;
             var send;
             $(document).ready(function() {
@@ -451,11 +456,40 @@
                         toggleTurn(false, 'Game Over!');
                         if(message.winner) {
                             modalGameOverBody.text('Congratulations, you won!');
-                            alert();
+                                var url = "game/member/playlist";
+                            	var nicname = "${sessionScope.nicname}";
+                                
+                            	$.ajax({
+                                	url:url,
+                                	data : {"nicname": nicname},
+                                	success:function(data){
+                                		
+                                	}
+                                })
+                                
+                                var url2 = "game/member/win";
+                            	                                
+                            	$.ajax({
+                                	url:url2,
+                                	data : {"nicname": nicname},
+                                	success:function(data){
+                                		
+                                	}
+                                })
                         } else {
                             modalGameOverBody.text('User "' + opponentUsername +
                                     '" won the game.');
-                            alert();
+                            var url = "game/member/playlist";
+                        	var nicname = "${sessionScope.nicname}";
+                            
+                        	$.ajax({
+                            	url:url,
+                            	data : {"nicname": nicname},
+                            	success:function(data){
+                            			
+                            	}
+                            })
+
                         }
                         modalGameOver.modal('show');
                         
@@ -510,12 +544,12 @@
             });
         </script>
         
+        
     </div>    
         
-    <div style='display:inline;float:left;width:600px; text-align:left'>
+    <div style='display:inline;float:left;width:500px; text-align:left'>
     
     <BR><BR>
-    <BR><BR><BR><BR>
     <!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
     <c:choose>
     <c:when test="${empty sessionScope.nicname }">
@@ -529,7 +563,7 @@
     <!--     채팅창 -->
     <div id="_chatbox" style="display: inline; text-align:left;">
         <fieldset>
-            <div id="messageWindow"  style="overflow:auto; width:450px; height:450px; 
+            <div id="messageWindow"  style="overflow:auto; width:450px; height:550px; 
             padding:10px; background-color:gold; text-align:left;"></div>
             <br /> <input id="inputMessage" type="text" style="width:400px;" onkeyup="enterkey()" />
             <input type="submit" value="send" onclick="send()" />

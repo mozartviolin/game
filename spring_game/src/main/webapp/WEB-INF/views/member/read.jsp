@@ -50,16 +50,9 @@ function mdel(){
 			<TR>
 				<TD rowspan='8' style="width: 30%;text-align:left">
 					플레이횟수:${memberDTO.playnum }<br>이긴횟수:${memberDTO.win }
-					<br>승률:
-					
-					<c:choose>
-						<c:when test="${not empty per }">
-						${per }
-						</c:when>
-						<c:otherwise>
-						0
-						</c:otherwise>
-					</c:choose>
+					<br>승률: 
+					<c:set var="avg" value="${memberDTO.win/memberDTO.playnum*100 }"/>
+					<c:out value= "${avg}"/> % 					
 					
 				</TD>
 				<TH style="width: 20%">아이디</TH>

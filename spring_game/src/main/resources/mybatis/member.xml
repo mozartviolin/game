@@ -5,6 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="member">
 
+<update id="playlist" parameterType="String">
+update member
+set playnum = playnum + 1
+where nicname = #{nicname}
+</update>
+
+<update id="win" parameterType="String">
+update member
+set win = win + 1
+where nicname = #{nicname}
+</update>
+
 <insert id="create" parameterType="MemberDTO">
 insert into member
 (id,nicname,mdate,mname,passwd)

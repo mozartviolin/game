@@ -125,5 +125,23 @@ public class MemberDAO implements IMemeberDAO{
 		return mysql.selectOne("member.getGrade", id);
 	}
 	
+	public boolean playlist(String nicname) {
+		
+		boolean flag = false;
+		int cnt = mysql.update("member.playlist", nicname);
+		if(cnt>0) flag = true;
+		
+		return flag;
+	}
+	
+	public boolean win(String nicname) {
+		
+		boolean flag = false;
+		int cnt = mysql.update("member.win", nicname);
+		if(cnt>0) flag = true;
+		
+		return flag;
+	}
+	
 
 }
