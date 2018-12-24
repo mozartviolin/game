@@ -15,7 +15,6 @@ import spring.model.member.MemberDAO;
 import spring.model.user.UserDTO;
 
 public class UserController {
-
 	
 	@Autowired
 	private MemberDAO dao;

@@ -451,23 +451,29 @@
                         toggleTurn(false, 'Game Over!');
                         if(message.winner) {
                             modalGameOverBody.text('Congratulations, you won!');
+                            alert();
                         } else {
                             modalGameOverBody.text('User "' + opponentUsername +
                                     '" won the game.');
+                            alert();
                         }
                         modalGameOver.modal('show');
+                        
                     } else if(message.action == 'gameIsDraw') {
                         toggleTurn(false, 'The game is a draw. ' +
                                 'There is no winner.');
                         modalGameOverBody.text('The game ended in a draw. ' +
                                 'Nobody wins!');
                         modalGameOver.modal('show');
+                        
                     } else if(message.action == 'gameForfeited') {
                         toggleTurn(false, 'Your opponent forfeited!');
                         modalGameOverBody.text('User "' + opponentUsername +
                                 '" forfeited the game. You win!');
                         modalGameOver.modal('show');
                     }
+                    
+                  
                 };
 
                 var toggleTurn = function(isMyTurn, message) {
@@ -525,7 +531,7 @@
         <fieldset>
             <div id="messageWindow"  style="overflow:auto; width:450px; height:450px; 
             padding:10px; background-color:gold; text-align:left;"></div>
-            <br /> <input id="inputMessage" type="text" onkeyup="enterkey()" />
+            <br /> <input id="inputMessage" type="text" style="width:400px;" onkeyup="enterkey()" />
             <input type="submit" value="send" onclick="send()" />
         </fieldset>
     </div>
