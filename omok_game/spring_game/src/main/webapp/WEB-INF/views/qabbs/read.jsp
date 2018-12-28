@@ -167,10 +167,10 @@ function rdelete(rnum){
   	<p>작성자 : ${qreplyDTO.nicname }  &nbsp;|| &nbsp;  작성일 : ${qreplyDTO.regdate}</p>
   	 
   	<p> ${qreplyDTO.content }</p>
-  	<c:if test="${sessionScope.nicname==qreplyDTO.nicname }">
+  	<c:if test="${sessionScope.nicname==qreplyDTO.nicname} ">
     </c:if>  
     
-    <c:if test="${sessionScope.nicname==qreplyDTO.nicname }">
+    <c:if test="${sessionScope.nicname==qreplyDTO.nicname}">
 	<span style="float:center;">
 		<a href="javascript:rupdate('${qreplyDTO.rnum}','${qreplyDTO.content}')">수정</a>
 		<a href="javascript:rdelete('${qreplyDTO.rnum}')">삭제</a>

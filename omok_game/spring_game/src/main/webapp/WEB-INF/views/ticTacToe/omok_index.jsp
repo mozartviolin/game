@@ -11,7 +11,7 @@
      <br><br>
     <div style="text-align:center"> 
        <h2>Games</h2>
-        <a href="<c:url value="/ticTacToe" />" target="_blank">Tic Tac Toe</a>
+        <a href="<c:url value="/ticTacToe" />" target="_blank">오목게임 접속</a>
 </div>
  <br><br>
     </body>

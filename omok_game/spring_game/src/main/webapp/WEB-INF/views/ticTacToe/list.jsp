@@ -12,16 +12,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Game Site :: Tic Tac Toe</title>
+        <title>Game Site :: 오목 게임</title>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     </head>
     <body>
-        <h2>Tic Tac Toe</h2>
-        <a href="javascript:void 0;" onclick="startGame();">Start a Game</a><br />
+        <h2>오목 게임</h2>
+        <a href="javascript:void 0;" onclick="startGame();">게임시작</a><br />
         <br />
         <c:choose>
             <c:when test="${fn:length(pendingGames) == 0}">
-                <i>There are no existing games to join.</i>
+                <i>진행 중인 게임이 없습니다.</i>
             </c:when>
             <c:otherwise>
                 Join a game waiting for a second player:<br />
