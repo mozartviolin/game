@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <select id="nicCheck" parameterType="String" resultType="int">
-select count(nicname) from member where meto=#{meto} 
+select count(nicname) from member where nicname=#{meto} 
 </select>
 
 <select id="count" parameterType="int" resultType="int">

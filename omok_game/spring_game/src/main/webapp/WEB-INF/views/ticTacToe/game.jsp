@@ -13,7 +13,7 @@
 <div style='display:inline;min-width:1050px;'>
     
     <div style='display:inline;float:left;width:550px;align:center; text-align:center;'>
-        <title>Game :: Tic Tac Toe</title>
+        <title>Game :: 오목 게임</title>
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
 <%--         <link rel="stylesheet"
               href="<c:url value="/resource/stylesheet/ticTacToe.css" />" /> --%>
@@ -75,7 +75,7 @@
         </style>
     </head>
     <body>
-        <h2>Tic Tac Toe</h2>
+        <h2>오목 게임</h2>
         <span class="player-label">You:</span> ${username}<br />
         <span class="player-label">Opponent:</span>
         <span id="opponent"><i>Waiting</i></span>
