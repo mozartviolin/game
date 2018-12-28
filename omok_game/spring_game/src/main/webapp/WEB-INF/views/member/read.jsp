@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/ssi/ssi.jsp" %>    
     
 <!DOCTYPE html>
@@ -51,8 +52,17 @@ function mdel(){
 				<TD rowspan='8' style="width: 30%;text-align:left">
 					플레이횟수:${memberDTO.playnum }<br>이긴횟수:${memberDTO.win }
 					<br>승률: 
-					<c:set var="avg" value="${memberDTO.win/memberDTO.playnum*100 }"/>
-					<c:out value= "${avg}"/> % 					
+					<c:choose>
+						<c:when test="${memberDTO.playnum!=0}">
+							<c:set var="avg" value="${memberDTO.win/memberDTO.playnum }"/>
+							<fmt:formatNumber value= "${avg}" type="percent"/> 
+						</c:when>
+						<c:otherwise>
+						 0%
+						</c:otherwise>
+					</c:choose>
+				
+										
 					
 				</TD>
 				<TH style="width: 20%">아이디</TH>
