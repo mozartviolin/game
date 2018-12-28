@@ -84,6 +84,9 @@ body {
 		style="margin-top: 46px">
 		<a href="${root}/bbs/list" class="w3-bar-item w3-button w3-padding-large"
 			onclick="myFunction()">자유게시판</a> 
+			
+		<a href="${root}/omok/index" class="w3-bar-item w3-button w3-padding-large"
+			onclick="myFunction()">오목게임</a> 
 		
 		<a href="#tour"	class="w3-bar-item w3-button w3-padding-large"
 			onclick="myFunction()">TOUR</a>

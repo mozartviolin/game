@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="answer">
+	
+	<insert id="create" parameterType="AnswerDTO">
+		INSERT INTO answer(subjectno, choise,content,sno)
+  		 VALUES((select nvl(max(subjectno),0)+1 as subjectno from answer), #{choise}, #{content}, #{sno})
+	</insert>
+	
+	<select id="read" parameterType="int" resultType="AnswerDTO">
+		select subjectno, choise, content, sno
+			from answer 
+			where subjectno = #{subjectno}
+	</select>
+	
+	<select id="resultread" parameterType="Map" resultType="AnswerDTO">
+		select subjectno, choise, content, sno, count
+			from answer 
+			where sno = #{sno} and choise = #{choise}
+	</select>
+		
+	<update id="updatepoll" parameterType="Map">
+		UPDATE answer
+		   SET count = count + 1 
+		   WHERE sno = #{sno} 
+		   and choise=#{choise}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from answer 
+			where subjectno = #{subjectno}
+	</delete>
+	
+	<select id="list" parameterType="Map" resultType="AnswerDTO">
+	select subjectno, choise, content, count, sno,  r
+		from(
+			select subjectno, choise, content, count, sno, rownum as r
+			from(
+				select subjectno, choise, content, count, sno  
+				from answer
+				order by subjectno
+			)
+		)
+	<![CDATA[                                                                        
+   where r>=#{ssno} and r<=#{eeno}
+   ]]>   
+	</select>	
+	
+	<select id="result1View" parameterType="int" resultType="int">
+		SELECT count
+		FROM answer
+		WHERE sno = #{sno}
+		and choise = 1
+	</select>
+	
+	<select id="result2View" parameterType="int" resultType="int">
+		SELECT count
+		FROM answer
+		WHERE sno = #{sno}
+		and choise = 2
+	</select>
+	
+	<select id="result3View" parameterType="int" resultType="int">
+		SELECT count
+		FROM answer
+		WHERE sno = #{sno}
+		and choise = 3
+	</select>
+	
+</mapper>
