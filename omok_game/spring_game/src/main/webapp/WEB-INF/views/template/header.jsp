@@ -163,7 +163,7 @@ popwin = window.open(url,winname,features);
 								
 			
 			<%
-    	session.setMaxInactiveInterval(120); // 걍 결과가 빨리 보고싶어서여.. 120초
+    	session.setMaxInactiveInterval(3600); // 1시간
     	sc.setSession(session);
 	 	out.println("<p style='text-align:right'>&nbsp;&nbsp;온라인&nbsp; : &nbsp;" + sc.getNowUser() + "<p>");
 		%> 
